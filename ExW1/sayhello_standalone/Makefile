@@ -1,14 +1,18 @@
 CC=llvm-g++
-CFLAGS=-Wall
+CFLAGS=-Wall -std=c++11
+LDFLAGS = -L.
 
 default: sayhello
 	./sayhello
-sayhello: sayhello.o mainsayhello.cpp
-	$(CC) -L. -lsayhello mainsayhello.cpp -o sayhello
+sayhello: libsayhello.a mainsayhello.cpp
+	$(CC) $(LDFLAGS) -lsayhello mainsayhello.cpp -o $@
+
+libsayhello.a: sayhello.o
+	ar -r $@ sayhello.o
 
 sayhello.o: sayhello.cpp sayhello.hpp
-	$(CC) -c -o sayhello.o sayhello.cpp
-	ar -r libsayhello.a sayhello.o
+	$(CC) -c -o $@ sayhello.cpp
+
 
 .PHONY: clean
 clean:
