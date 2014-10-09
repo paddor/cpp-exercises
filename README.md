@@ -1,4 +1,4 @@
 prog3
 =====
 
-Exercises for Prog3, programming with C++
+Just my attempt to keep it simple.
