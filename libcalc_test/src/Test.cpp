@@ -19,6 +19,9 @@ void addition() {
 void subtraction() {
 	ASSERT_EQUAL(-1, calc(2, 3, '-'));
 }
+void modulo() {
+	ASSERT_EQUAL(5, calc(15, 10, '%'));
+}
 void invalid_operator() {
 	ASSERT_THROWS(calc(1, 1, '^'), std::invalid_argument);
 }
@@ -31,6 +34,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(addition));
 	s.push_back(CUTE(subtraction));
 	s.push_back(CUTE(invalid_operator));
+	s.push_back(CUTE(modulo));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

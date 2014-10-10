@@ -10,6 +10,7 @@ int calc(int a, int b, char op) {
 		return a/b;
 	case '+': return a+b;
 	case '-': return a-b;
+	case '%': return a%b;
 	}
 	throw std::invalid_argument{"invalid operator"};
 }

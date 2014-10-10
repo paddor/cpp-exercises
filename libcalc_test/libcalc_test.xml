@@ -1,10 +1,11 @@
 <testsuites>
-	<testsuite name="AllTests" tests="6">
+	<testsuite name="AllTests" tests="7">
 		<testcase classname="AllTests" name="multiplication"/>
 		<testcase classname="AllTests" name="division"/>
 		<testcase classname="AllTests" name="division_by_zero"/>
 		<testcase classname="AllTests" name="addition"/>
 		<testcase classname="AllTests" name="subtraction"/>
 		<testcase classname="AllTests" name="invalid_operator"/>
+		<testcase classname="AllTests" name="modulo"/>
 	</testsuite>
 </testsuites>
