@@ -5,22 +5,22 @@
 #include "calc.cpp"
 
 void multiplication() {
-	ASSERT_EQUAL(20, calc(4, 5, "*"[0]));
+	ASSERT_EQUAL(20, calc(4, 5, '*'));
 }
 void division() {
-	ASSERT_EQUAL(5, calc(60, 12, "/"[0]));
+	ASSERT_EQUAL(5, calc(60, 12, '/'));
 }
 void division_by_zero() {
-	ASSERT_THROWS(calc(1, 0, "/"[0]), std::domain_error);
+	ASSERT_THROWS(calc(1, 0, '/'), std::domain_error);
 }
 void addition() {
-	ASSERT_EQUAL(5, calc(2, 3, "+"[0]));
+	ASSERT_EQUAL(5, calc(2, 3, '+'));
 }
 void subtraction() {
-	ASSERT_EQUAL(-1, calc(2, 3, "-"[0]));
+	ASSERT_EQUAL(-1, calc(2, 3, '-'));
 }
 void invalid_operator() {
-	ASSERT_THROWS(calc(1, 1, "^"[0]), std::invalid_argument);
+	ASSERT_THROWS(calc(1, 1, '^'), std::invalid_argument);
 }
 
 void runAllTests(int argc, char const *argv[]){
