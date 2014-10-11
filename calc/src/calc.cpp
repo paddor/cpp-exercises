@@ -15,11 +15,8 @@ int calc(int a, int b, char operator_symbol) {
 }
 
 int calc(std::istream& input) {
-	int a {0};
-	int b {0};
-	char op { };
-	input >> a;
-	input >> op;
-	input >> b;
-	return calc(a, b, op);
+	int a {0}, b {0};
+	char operator_symbol { };
+	input >> a >> operator_symbol >> b;
+	return calc(a, b, operator_symbol);
 }
