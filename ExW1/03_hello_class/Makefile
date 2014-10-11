@@ -1,5 +1,5 @@
 CC = llvm-g++
-INCLUDES = -I../../Catch/include
+INCLUDES = -I../Catch/include
 CFLAGS = -Wall $(INCLUDES) -std=c++11
 LDFLAGS = -L.
 
