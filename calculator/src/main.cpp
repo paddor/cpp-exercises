@@ -3,7 +3,7 @@
 
 int main(){
 	while (std::cin) {
-		std::cout << "Please type your term to calculate: ";
+		std::cout << "Please type your input term: ";
 		int result = calc(std::cin);
 		std::cout << "= " << result << '\n';
 	}
