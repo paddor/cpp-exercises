@@ -2,6 +2,7 @@
 #include "ide_listener.h"
 #include "xml_listener.h"
 #include "cute_runner.h"
+#include <sstream>
 #include "calc.cpp"
 
 void multiplication() {
@@ -27,9 +28,14 @@ void invalid_operator() {
 }
 
 void calculation_from_istream() {
-	auto& is = std::istringstream();
+	std::istringstream is { "1+1" };
 	int result = calc(is);
 	ASSERT_EQUAL(2, result);
+}
+
+void invalid_calculation_from_istream() {
+	std::istringstream is { "foobar" };
+	ASSERT_THROWS(calc(is), std::invalid_argument);
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -42,6 +48,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(invalid_operator));
 	s.push_back(CUTE(modulo));
 	s.push_back(CUTE(calculation_from_istream));
+	s.push_back(CUTE(invalid_calculation_from_istream));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

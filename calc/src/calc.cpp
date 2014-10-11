@@ -15,7 +15,7 @@ int calc(int a, int b, char operator_symbol) {
 	throw std::invalid_argument{"invalid operator"};
 }
 
-int calc(std::istream input) {
+int calc(std::istream& input) {
 	int a {0};
 	int b {0};
 	char op { };
