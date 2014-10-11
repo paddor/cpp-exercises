@@ -34,8 +34,8 @@ void calculation_from_istream() {
 }
 
 void invalid_calculation_from_istream() {
-	std::istringstream is { "foobar" };
-	ASSERT_THROWS(calc(is), std::invalid_argument);
+	std::istringstream input_stream { "foobar" };
+	ASSERT_THROWS(calc(input_stream), std::invalid_argument);
 }
 
 void runAllTests(int argc, char const *argv[]){
