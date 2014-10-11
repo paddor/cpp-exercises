@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>libcalc_test</name>
+	<name>calc_test</name>
 	<comment></comment>
 	<projects>
-		<project>libcalc</project>
+		<project>calc</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

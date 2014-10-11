@@ -26,6 +26,12 @@ void invalid_operator() {
 	ASSERT_THROWS(calc(1, 1, '^'), std::invalid_argument);
 }
 
+void calculation_from_istream() {
+	auto& is = std::istringstream();
+	int result = calc(is);
+	ASSERT_EQUAL(2, result);
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s { };
 	s.push_back(CUTE(multiplication));
@@ -35,6 +41,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(subtraction));
 	s.push_back(CUTE(invalid_operator));
 	s.push_back(CUTE(modulo));
+	s.push_back(CUTE(calculation_from_istream));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
