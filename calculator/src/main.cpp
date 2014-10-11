@@ -2,9 +2,9 @@
 #include <iostream>
 
 int main(){
-	std::cout << calc(1,1,'+');
-
-//  while (std::cin) {
-//    std::cout << '=' << calc(std::cin) << '\n';
-//  }
+	while (std::cin) {
+		std::cout << "Please type your term to calculate: ";
+		int result = calc(std::cin);
+		std::cout << "= " << result << '\n';
+	}
 }
