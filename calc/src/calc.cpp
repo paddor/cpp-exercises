@@ -1,5 +1,6 @@
 #include "calc.h"
 #include <stdexcept>
+#include <string>
 
 // Calculates the result of two numbers a and b and basic math operator.
 int calc(int a, int b, char operator_symbol) {
@@ -12,8 +13,11 @@ int calc(int a, int b, char operator_symbol) {
 		case '-': return a-b;
 		case '%': return a%b;
 	}
-	throw std::invalid_argument{"invalid operator"};
-}
+
+	auto reason = std::string("invalid operator: ");
+	reason.push_back(operator_symbol);
+	throw std::invalid_argument{reason};
+};
 
 // Just like calc(int, int, char), but gets the numbers and operator
 // from an input stream.
