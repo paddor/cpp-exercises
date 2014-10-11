@@ -7,21 +7,26 @@
 
 void it_multiplies() {
 	ASSERT_EQUAL(20, calc(4, 5, '*'));
+	ASSERT_EQUAL(-30, calc(-6, 5, '*'));
 }
 void it_divides() {
 	ASSERT_EQUAL(5, calc(60, 12, '/'));
+	ASSERT_EQUAL(-3, calc(9, -3, '/'));
 }
 void it_throws_when_dividing_by_zero() {
 	ASSERT_THROWS(calc(1, 0, '/'), std::domain_error);
 }
 void it_adds() {
 	ASSERT_EQUAL(5, calc(2, 3, '+'));
+	ASSERT_EQUAL(-10, calc(-6, -4, '+'));
 }
 void it_subtracts() {
-	ASSERT_EQUAL(-1, calc(2, 3, '-'));
+	ASSERT_EQUAL(17, calc(20, 3, '-'));
+	ASSERT_EQUAL(-5, calc(-2, 3, '-'));
 }
 void it_knows_modulo() {
 	ASSERT_EQUAL(5, calc(15, 10, '%'));
+	ASSERT_EQUAL(-5, calc(-15, 10, '%'));
 }
 void it_throws_when_modulo_zero() {
 	ASSERT_THROWS(calc(10, 0, '%'), std::domain_error);
