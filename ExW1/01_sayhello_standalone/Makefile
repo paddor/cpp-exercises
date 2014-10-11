@@ -4,8 +4,8 @@ LDFLAGS = -L.
 
 default: sayhello
 	./sayhello
-sayhello: libsayhello.a mainsayhello.cpp
-	$(CC) $(LDFLAGS) -lsayhello mainsayhello.cpp -o $@
+sayhello: libsayhello.a main.cpp
+	$(CC) $(LDFLAGS) -lsayhello main.cpp -o $@
 
 libsayhello.a: sayhello.o
 	ar -r $@ sayhello.o
