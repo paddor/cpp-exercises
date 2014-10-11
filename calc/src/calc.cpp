@@ -1,6 +1,5 @@
 #include "calc.h"
 #include <stdexcept>
-#include <sstream>
 
 int calc(int a, int b, char operator_symbol) {
 	switch (operator_symbol) {
