@@ -11,7 +11,9 @@ int calc(int a, int b, char operator_symbol) {
 			return a/b;
 		case '+': return a+b;
 		case '-': return a-b;
-		case '%': return a%b;
+		case '%':
+			if (b == 0) throw std::domain_error{"division by zero"};
+			return a%b;
 	}
 
 	auto reason = std::string("invalid operator: ");

@@ -23,6 +23,9 @@ void it_subtracts() {
 void it_knows_modulo() {
 	ASSERT_EQUAL(5, calc(15, 10, '%'));
 }
+void it_throws_when_modulo_zero() {
+	ASSERT_THROWS(calc(10, 0, '%'), std::domain_error);
+}
 void it_throws_when_given_invalid_operator() {
 	ASSERT_THROWS(calc(1, 1, '^'), std::invalid_argument);
 }
@@ -47,6 +50,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(it_subtracts));
 	s.push_back(CUTE(it_throws_when_given_invalid_operator));
 	s.push_back(CUTE(it_knows_modulo));
+	s.push_back(CUTE(it_throws_when_modulo_zero));
 	s.push_back(CUTE(it_takes_term_from_istream));
 	s.push_back(CUTE(it_throws_when_given_invalid_term_in_istream));
 	cute::xml_file_opener xmlfile(argc,argv);
