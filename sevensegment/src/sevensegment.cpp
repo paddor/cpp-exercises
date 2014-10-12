@@ -1,7 +1,8 @@
 #include <ostream>
+#include <iostream>
 #include <vector>
 #include <string>
-#include <iostream>
+#include "sevensegment.h"
 
 
 const std::vector< std::vector<std::string> > digits {

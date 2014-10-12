@@ -1,5 +1,6 @@
 #include <iostream>
-#include "sevensegment.cpp"
+#include "sevensegment.h"
+
 int main() {
 	printLargeDigit(8, std::cout);
 }
