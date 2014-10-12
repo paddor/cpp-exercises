@@ -5,7 +5,7 @@
 #include "sevensegment.h"
 
 
-const std::vector< std::vector<std::string> > digits {
+const static std::vector< std::vector<std::string> > digits {
 	{ " - ", "| |", "   ", "| |", " - " }, // 0
 	{ "   ", "  |", "   ", "  |", "   " }, // 1
 	{ " - ", "  |", " - ", "|  ", " - " }, // 2
