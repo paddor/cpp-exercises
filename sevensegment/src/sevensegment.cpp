@@ -21,6 +21,5 @@ void printLargeDigit(unsigned i, std::ostream &out) {
 	std::vector< std::string> digit = digits.at(i);
 	for_each(digit.begin(), digit.end(), [&](std::string line) {
 		out << line << '\n';
-		out << line << '\n';
 	});
 }
