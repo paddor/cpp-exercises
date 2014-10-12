@@ -1,4 +1,4 @@
-#include "calc.cpp"
+#include "calc.h"
 #include <vector>
 #include <string>
 #include <iostream>
