@@ -31,7 +31,9 @@
 								<option id="macosx.cpp.link.option.paths.656131725" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc/Debug}&quot;"/>
 								</option>
-								<option id="macosx.cpp.link.option.libs.978421883" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs"/>
+								<option id="macosx.cpp.link.option.libs.978421883" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="calc"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.750320677" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>

@@ -3,7 +3,7 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include <sstream>
-#include "calc.cpp"
+#include "calc.h"
 
 void it_multiplies() {
 	ASSERT_EQUAL(20, calc(4, 5, '*'));
