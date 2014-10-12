@@ -3,17 +3,26 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include "sevensegment.h"
-#include <iostream>
+#include <sstream>
+#include <string>
 
-void thisIsATest() {
-	printLargeDigit(8,std::cout);
-	ASSERTM("start writing tests", true);
+const std::string large_8 {
+	" - \n"
+	"| |\n"
+	" - \n"
+	"| |\n"
+	" - \n"
+};
+
+void it_prints_large_digit() {
+	std::ostringstream output {};
+	printLargeDigit(8,output);
+	ASSERT_EQUAL(large_8, output.str());
 }
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s { };
-	//TODO add your test here
-	s.push_back(CUTE(thisIsATest));
+	s.push_back(CUTE(it_prints_large_digit));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
