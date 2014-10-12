@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 
 #include "catch.hpp"
-#include "sayhello.cpp"
+#include "sayhello.hpp"
 #include <sstream>
 TEST_CASE("says hello") {
 	auto os = std::ostringstream();
