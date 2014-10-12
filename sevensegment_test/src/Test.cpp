@@ -13,11 +13,23 @@ const std::string large_8 {
 	"| |\n"
 	" - \n"
 };
+const std::string large_1 {
+	"   \n"
+	"  |\n"
+	"   \n"
+	"  |\n"
+	"   \n"
+};
 
-void it_prints_large_digit() {
+void it_prints_large_8() {
 	std::ostringstream output {};
 	printLargeDigit(8,output);
 	ASSERT_EQUAL(large_8, output.str());
+}
+void it_prints_large_1() {
+	std::ostringstream output {};
+	printLargeDigit(1,output);
+	ASSERT_EQUAL(large_1, output.str());
 }
 void it_throws_when_number_out_of_range() {
 	std::ostringstream output {};
@@ -26,7 +38,8 @@ void it_throws_when_number_out_of_range() {
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s { };
-	s.push_back(CUTE(it_prints_large_digit));
+	s.push_back(CUTE(it_prints_large_8));
+	s.push_back(CUTE(it_prints_large_1));
 	s.push_back(CUTE(it_throws_when_number_out_of_range));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
