@@ -1,7 +1,7 @@
 #ifndef CALC_H_
 #define CALC_H_
 
-#include <istream>
+#include <iosfwd>
 #include <string>
 int calc(int a, int b, char operator_symbol);
 int calc(std::istream &input);
