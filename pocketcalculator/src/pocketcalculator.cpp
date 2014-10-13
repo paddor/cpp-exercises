@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <stdlib.h>
 #include "calc.h"
 #include "sevensegment.h"
 
@@ -11,7 +12,7 @@ namespace pocketcalculator {
 		std::getline(input, term);
 		auto result = calc(term);
 		printLargeNumber(result, output, n);
-	} catch(std::logic_error) {
+	} catch(std::logic_error&) {
 		printLargeError(output, n);
 	}
 
