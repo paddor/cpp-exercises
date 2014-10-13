@@ -4,6 +4,7 @@
 int main() {
 	printLargeDigit(8, std::cout);
 	printLargeDigit(3, std::cout, 3);
-	printLargeDigit(5, std::cout, 4);
-	printLargeDigit(7, std::cout, 4);
+	printLargeNumber(30921, std::cout, 3);
+	printLargeNumber(-9, std::cout, 3);
+	printLargeNumber(-76543, std::cout, 8);
 }
