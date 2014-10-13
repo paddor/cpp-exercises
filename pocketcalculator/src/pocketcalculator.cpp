@@ -5,20 +5,20 @@
 #include "sevensegment.h"
 
 namespace pocketcalculator {
-	void display_result_for(std::istream &input, std::ostream &output)
+	void display_result_for(std::istream &input, std::ostream &output, unsigned n)
 	try {
 		std::string term {};
 		std::getline(input, term);
 		auto result = calc(term);
-		printLargeNumber(result, output, 3);
+		printLargeNumber(result, output, n);
 	} catch(std::logic_error) {
-		printLargeError(output, 3);
+		printLargeError(output, n);
 	}
 
-	void start(std::istream &input, std::ostream &output) {
+	void start(std::istream &input, std::ostream &output, unsigned n=3) {
 		while (input) {
 			output << "Please type your input term: ";
-			display_result_for(input, output);
+			display_result_for(input, output, n);
 		}
 	}
 }
