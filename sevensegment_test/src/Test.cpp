@@ -48,11 +48,56 @@ void it_throws_when_digit_out_of_range() {
 	ASSERT_THROWS(printLargeDigit(10,output), std::out_of_range);
 }
 
+const std::string large_number {
+	" -     -  -    \n"
+	"|  | |  |  |  |\n"
+	" -  -  -  -    \n"
+	"  |  |  ||    |\n"
+	" -     -  -    \n"
+};
+
+const std::string large_negative_number {
+"    -  - \n"
+"     |  |\n"
+" -  -  - \n"
+"     |  |\n"
+"    -  - \n"
+};
+
+void it_prints_number() {
+	std::ostringstream output {};
+	printLargeNumber(54321, output);
+	ASSERT_EQUAL(large_number, output.str());
+}
+
+void it_prints_negative_number() {
+	std::ostringstream output {};
+	printLargeNumber(-33, output);
+	ASSERT_EQUAL(large_negative_number, output.str());
+}
+
+const std::string large_error {
+	" -             \n"
+	"|              \n"
+	" -  -  -  -  - \n"
+	"|  |  |  | ||  \n"
+	" -        -    \n"
+};
+
+void it_prints_error() {
+	std::ostringstream output {};
+	printLargeError(output);
+	ASSERT_EQUAL(large_error, output.str());
+}
+
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s { };
 	s.push_back(CUTE(it_prints_digit));
 	s.push_back(CUTE(it_prints_scaled_digit));
 	s.push_back(CUTE(it_throws_when_digit_out_of_range));
+	s.push_back(CUTE(it_prints_number));
+	s.push_back(CUTE(it_prints_negative_number));
+	s.push_back(CUTE(it_prints_error));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
