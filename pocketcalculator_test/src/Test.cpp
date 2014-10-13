@@ -50,17 +50,21 @@ namespace calc_tests {
 		int result = calc(term);
 		ASSERT_EQUAL(-2, result);
 	}
-	void throws_when_given_invalid_term() {
-		std::vector<std::string> invalid_terms {
-			"foobar",
-			"3+2-",
-			"1",
-			"8--",
-			"*",
-			"4%%6",
-			"3//7",
-		};
-		for_each(invalid_terms.begin(), invalid_terms.end(), [](std::string term) {
+
+	const std::vector<std::string> invalid_terms {
+        "foobar",
+        "3+2-",
+        "1",
+        "8--",
+        "*",
+        "4%%6",
+        "3//7",
+	};
+
+    void throws_when_given_invalid_term() {
+		for_each(invalid_terms.begin(), invalid_terms.end(),
+				[](std::string term) {
+
 			ASSERT_THROWS(calc(term), std::exception);
 		});
 	}
@@ -120,11 +124,13 @@ namespace sevensegment_tests {
 	}
 	void throws_when_digit_out_of_range() {
 		std::ostringstream output {};
-		ASSERT_THROWS(sevensegment::printLargeDigit(10,output), std::out_of_range);
+		ASSERT_THROWS(sevensegment::printLargeDigit(10,output),
+				std::out_of_range);
 	}
 	void throws_when_scale_out_of_range() {
 		std::ostringstream output {};
-		ASSERT_THROWS(sevensegment::printLargeDigit(5,output, 0), std::invalid_argument);
+		ASSERT_THROWS(sevensegment::printLargeDigit(5,output, 0),
+				std::invalid_argument);
 	}
 
 	const std::string large_number {
@@ -190,14 +196,41 @@ namespace pocketcalculator_tests {
 		"|    |   \n"
 		" --   -- \n"
 	};
-	void reads_from_istream_and_writes_large_result_to_ostream() {
+
+	void gets_term_and_prints_result() {
 		std::ostringstream output {};
 		std::istringstream input { "2+20" };
 		pocketcalculator::start(input, output);
 		ASSERT(output.str().find(large_output) != std::string::npos);
 	}
+
+	const std::string error_scale2 {
+		" --                     \n"
+		"|                       \n"
+		"|                       \n"
+		" --   --   --   --   -- \n"
+		"|    |    |    |  | |   \n"
+		"|    |    |    |  | |   \n"
+		" --             --      \n"
+	};
+
+	void prints_error_on_invalid_input() {
+		std::ostringstream output {};
+		std::istringstream input {};
+		for_each(calc_tests::invalid_terms.begin(),
+				calc_tests::invalid_terms.end(), [&](std::string term) {
+
+			output.str("");
+			input.str(term); input.clear(); // clear error state flags
+			pocketcalculator::start(input, output);
+			ASSERT_NOT_EQUAL_TO(std::string::npos,
+					output.str().find(error_scale2));
+		});
+	}
+
 	void add_tests_to_suite(cute::suite &s) {
-		s.push_back(CUTE(reads_from_istream_and_writes_large_result_to_ostream));
+		s.push_back(CUTE(gets_term_and_prints_result));
+		s.push_back(CUTE(prints_error_on_invalid_input));
 	}
 }
 
