@@ -36,8 +36,8 @@ void it_throws_when_given_invalid_operator() {
 }
 
 void it_takes_term_from_istream() {
-	std::istringstream is { "1+1" };
-	int result = calc(is);
+	std::istringstream term_stream { "1+1" };
+	int result = calc(term_stream);
 	ASSERT_EQUAL(2, result);
 }
 

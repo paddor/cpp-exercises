@@ -1,6 +1,7 @@
 #include "calc.h"
 #include <stdexcept>
 #include <string>
+#include <sstream>
 
 // Calculates the result of two numbers a and b and basic math operator.
 int calc(int a, int b, char operator_symbol) {
@@ -28,4 +29,10 @@ int calc(std::istream &input) {
 	if (input.fail() || !input.eof())
 			throw std::invalid_argument{ "malformed input term"};
 	return calc(a, b, operator_symbol);
+}
+
+int calc(std::string &term) {
+	std::istringstream term_stream { term };
+	return calc(term_stream);
+
 }
