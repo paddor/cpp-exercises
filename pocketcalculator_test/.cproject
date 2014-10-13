@@ -54,7 +54,6 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug.1652083368" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug">
 								<option id="gnu.both.asm.option.include.paths.249182010" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/libcalc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator_test/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator}&quot;"/>
@@ -81,7 +80,6 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.macosx.exe.debug.option.optimization.level.1745198784" name="Optimization Level" superClass="gnu.c.compiler.macosx.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.macosx.exe.debug.option.debugging.level.1501235491" name="Debug Level" superClass="gnu.c.compiler.macosx.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.933644109" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/libcalc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator_test/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator}&quot;"/>
