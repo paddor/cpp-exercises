@@ -20,16 +20,28 @@ const std::string large_1 {
 	"  |\n"
 	"   \n"
 };
+const std::string large_3_scale2 {
+	" -- \n"
+	"   |\n"
+	"   |\n"
+	" -- \n"
+	"   |\n"
+	"   |\n"
+	" -- \n"
+};
 
-void it_prints_large_8() {
+void it_prints_digit() {
 	std::ostringstream output {};
-	printLargeDigit(8,output);
+	printLargeDigit(8, output);
 	ASSERT_EQUAL(large_8, output.str());
-}
-void it_prints_large_1() {
-	std::ostringstream output {};
-	printLargeDigit(1,output);
+	output.str("");
+	printLargeDigit(1, output);
 	ASSERT_EQUAL(large_1, output.str());
+}
+void it_prints_scaled_digit() {
+	std::ostringstream output {};
+	printLargeDigit(3, output, 2);
+	ASSERT_EQUAL(large_3_scale2, output.str());
 }
 void it_throws_when_number_out_of_range() {
 	std::ostringstream output {};
@@ -38,8 +50,8 @@ void it_throws_when_number_out_of_range() {
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s { };
-	s.push_back(CUTE(it_prints_large_8));
-	s.push_back(CUTE(it_prints_large_1));
+	s.push_back(CUTE(it_prints_digit));
+	s.push_back(CUTE(it_prints_scaled_digit));
 	s.push_back(CUTE(it_throws_when_number_out_of_range));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
