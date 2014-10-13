@@ -20,6 +20,14 @@ const static std::vector< std::vector<std::string> > digits {
 const static std::vector<std::string> minus_sign
 	{ "   ", "   ", " - ", "   ", "   " }; // -
 
+const static std::vector< std::vector<std::string> > error {
+	{ " - ", "|  ", " - ", "|  ", " - " }, // E
+	{ "   ", "   ", " - ", "|  ", "   " }, // r
+	{ "   ", "   ", " - ", "|  ", "   " }, // r
+	{ "   ", "   ", " - ", "| |", " - " }, // o
+	{ "   ", "   ", " - ", "|  ", "   " }, // r
+};
+
 std::string stretchLine(const std::string &line, unsigned n) {
 	std::string stretched_line(n+2, line[1]);
 	stretched_line.front() = line[0];
@@ -85,4 +93,8 @@ void printDigitSequence(std::vector< std::vector<std::string> > digits_vector, s
 void printLargeNumber(int i, std::ostream &out, unsigned n) {
 	auto digits_vector = split_digits(i);
 	printDigitSequence(digits_vector, out, n);
+}
+
+void printLargeError(std::ostream &out, unsigned n) {
+	printDigitSequence(error, out, n);
 }
