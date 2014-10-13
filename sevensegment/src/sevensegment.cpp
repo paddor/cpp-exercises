@@ -1,5 +1,4 @@
 #include <ostream>
-#include <iostream>
 #include <vector>
 #include <string>
 #include "sevensegment.h"
