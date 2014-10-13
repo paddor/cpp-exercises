@@ -70,7 +70,7 @@ std::string lineOfLargeDigits(const std::vector< std::vector<std::string> > &dig
 	std::string line {};
 	for_each(digits_vector.begin(), digits_vector.end(), [&](std::vector<std::string> digit){
 		line.append(stretchLine(digit[line_nr], n));
-		line.append(n/3, ' '); // roughly 1/3 letter spacing for readability
+		line.append(n/2, ' '); // letter spacing for readability
 	});
 	return line;
 }
