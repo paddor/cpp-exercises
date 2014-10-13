@@ -57,13 +57,16 @@ namespace sevensegment {
 
 	std::string lineOfLargeDigits(const std::vector< std::vector<std::string> > &digits_vector, unsigned line_nr, unsigned n){
 		std::string line {};
+		unsigned digit_nr { 0 };
 		for_each(digits_vector.begin(), digits_vector.end(), [&](std::vector<std::string> digit){
 			line.append(stretchLine(digit[line_nr], n));
-			line.append(n/2, ' '); // letter spacing for readability
+
+			// between digits (not at the end)
+			if (++digit_nr != digits_vector.size())
+				line.append(n/2, ' '); // letter spacing for readability
 		});
 		return line;
 	}
-
 
 	void printDigitSequence(std::vector< std::vector<std::string> > digits_vector, std::ostream &out, unsigned n){
 		if (n<1) throw std::invalid_argument { "invalid scale" };
