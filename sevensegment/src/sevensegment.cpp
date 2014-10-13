@@ -37,19 +37,6 @@ namespace sevensegment {
 		return stretched_line;
 	}
 
-	void printLargeDigit(unsigned i, std::ostream &out, unsigned n) {
-		auto digit = digits.at(i);
-		std::ostream_iterator<std::string> out_it(out, "\n");
-		auto second_line = stretchLine(digit[1], n);
-		auto fourth_line = stretchLine(digit[3], n);
-
-		out << stretchLine(digit[0], n) << '\n';
-		std::generate_n(out_it, n, [&](){return second_line;});
-		out << stretchLine(digit[2], n) << '\n';
-		std::generate_n(out_it, n, [&](){return fourth_line;});
-		out << stretchLine(digit[4], n) << '\n';
-	}
-
 	std::vector< std::vector<std::string> > split_digits(int i, std::vector< std::vector<std::string> > &vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
@@ -93,6 +80,12 @@ namespace sevensegment {
 			}
 			line_nr++;
 		});
+	}
+
+	void printLargeDigit(unsigned i, std::ostream &out, unsigned n) {
+		auto digit = digits.at(i);
+		std::vector< std::vector<std::string> > single_digit_vector { digit };
+		printDigitSequence(single_digit_vector, out, n);
 	}
 
 	void printLargeNumber(int i, std::ostream &out, unsigned n) {
