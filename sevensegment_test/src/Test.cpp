@@ -32,20 +32,20 @@ const std::string large_3_scale2 {
 
 void it_prints_digit() {
 	std::ostringstream output {};
-	printLargeDigit(8, output);
+	sevensegment::printLargeDigit(8, output);
 	ASSERT_EQUAL(large_8, output.str());
 	output.str("");
-	printLargeDigit(1, output);
+	sevensegment::printLargeDigit(1, output);
 	ASSERT_EQUAL(large_1, output.str());
 }
 void it_prints_scaled_digit() {
 	std::ostringstream output {};
-	printLargeDigit(3, output, 2);
+	sevensegment::printLargeDigit(3, output, 2);
 	ASSERT_EQUAL(large_3_scale2, output.str());
 }
 void it_throws_when_digit_out_of_range() {
 	std::ostringstream output {};
-	ASSERT_THROWS(printLargeDigit(10,output), std::out_of_range);
+	ASSERT_THROWS(sevensegment::printLargeDigit(10,output), std::out_of_range);
 }
 
 const std::string large_number {
@@ -66,13 +66,13 @@ const std::string large_negative_number {
 
 void it_prints_number() {
 	std::ostringstream output {};
-	printLargeNumber(54321, output);
+	sevensegment::printLargeNumber(54321, output);
 	ASSERT_EQUAL(large_number, output.str());
 }
 
 void it_prints_negative_number() {
 	std::ostringstream output {};
-	printLargeNumber(-33, output);
+	sevensegment::printLargeNumber(-33, output);
 	ASSERT_EQUAL(large_negative_number, output.str());
 }
 
@@ -86,7 +86,7 @@ const std::string large_error {
 
 void it_prints_error() {
 	std::ostringstream output {};
-	printLargeError(output);
+	sevensegment::printLargeError(output);
 	ASSERT_EQUAL(large_error, output.str());
 }
 
