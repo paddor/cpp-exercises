@@ -43,7 +43,7 @@ void it_prints_scaled_digit() {
 	printLargeDigit(3, output, 2);
 	ASSERT_EQUAL(large_3_scale2, output.str());
 }
-void it_throws_when_number_out_of_range() {
+void it_throws_when_digit_out_of_range() {
 	std::ostringstream output {};
 	ASSERT_THROWS(printLargeDigit(10,output), std::out_of_range);
 }
@@ -52,7 +52,7 @@ void runAllTests(int argc, char const *argv[]){
 	cute::suite s { };
 	s.push_back(CUTE(it_prints_digit));
 	s.push_back(CUTE(it_prints_scaled_digit));
-	s.push_back(CUTE(it_throws_when_number_out_of_range));
+	s.push_back(CUTE(it_throws_when_digit_out_of_range));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
