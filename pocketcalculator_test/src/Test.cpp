@@ -122,6 +122,10 @@ namespace sevensegment_tests {
 		std::ostringstream output {};
 		ASSERT_THROWS(sevensegment::printLargeDigit(10,output), std::out_of_range);
 	}
+	void it_throws_when_scale_out_of_range() {
+		std::ostringstream output {};
+		ASSERT_THROWS(sevensegment::printLargeDigit(5,output, 0), std::invalid_argument);
+	}
 
 	const std::string large_number {
 		" -     -  -    \n"
@@ -169,6 +173,7 @@ namespace sevensegment_tests {
 		s.push_back(CUTE(it_prints_digit));
 		s.push_back(CUTE(it_prints_scaled_digit));
 		s.push_back(CUTE(it_throws_when_digit_out_of_range));
+		s.push_back(CUTE(it_throws_when_scale_out_of_range));
 		s.push_back(CUTE(it_prints_number));
 		s.push_back(CUTE(it_prints_negative_number));
 		s.push_back(CUTE(it_prints_error));
