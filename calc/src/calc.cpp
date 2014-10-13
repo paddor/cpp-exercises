@@ -25,5 +25,7 @@ int calc(std::istream &input) {
 	int a {0}, b {0};
 	char operator_symbol { };
 	input >> a >> operator_symbol >> b;
+	if (input.fail() || !input.eof())
+			throw std::invalid_argument{ "malformed input term"};
 	return calc(a, b, operator_symbol);
 }
