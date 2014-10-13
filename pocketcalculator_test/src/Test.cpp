@@ -228,9 +228,49 @@ namespace pocketcalculator_tests {
 		});
 	}
 
+	const std::string large_2_scale4 {
+		" ---- \n"
+		"     |\n"
+		"     |\n"
+		"     |\n"
+		"     |\n"
+		" ---- \n"
+		"|     \n"
+		"|     \n"
+		"|     \n"
+		"|     \n"
+		" ---- \n"
+	};
+
+	void scales() {
+		std::ostringstream output {};
+		std::istringstream input {"1+1"};
+		pocketcalculator::start(input, output, 4);
+		ASSERT_NOT_EQUAL_TO(std::string::npos, output.str().find(large_2_scale4));
+	}
+
+	const std::string large_2_scale2 {
+		" -- \n"
+		"   |\n"
+		"   |\n"
+		" -- \n"
+		"|   \n"
+		"|   \n"
+		" -- \n"
+	};
+
+	void uses_default_scale_when_scale_0() {
+		std::ostringstream output {};
+		std::istringstream input {"1+1"};
+		pocketcalculator::start(input, output, 0);
+		ASSERT_NOT_EQUAL_TO(std::string::npos, output.str().find(large_2_scale2));
+	}
+
 	void add_tests_to_suite(cute::suite &s) {
 		s.push_back(CUTE(gets_term_and_prints_result));
 		s.push_back(CUTE(prints_error_on_invalid_input));
+		s.push_back(CUTE(scales));
+		s.push_back(CUTE(uses_default_scale_when_scale_0));
 	}
 }
 
