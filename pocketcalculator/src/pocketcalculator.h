@@ -3,7 +3,9 @@
 
 #include <iosfwd>
 
-void pocketcalculator(std::istream &input, std::ostream &output);
+namespace pocketcalculator {
+	void start(std::istream &input, std::ostream &output);
+}
 
 
 #endif /* POCKETCALCULATOR_H_ */
