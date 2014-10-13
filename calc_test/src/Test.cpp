@@ -40,10 +40,24 @@ void it_takes_term_from_istream() {
 	int result = calc(term_stream);
 	ASSERT_EQUAL(2, result);
 }
-
-void it_throws_when_given_invalid_term_in_istream() {
-	std::istringstream input_stream { "foobar" };
-	ASSERT_THROWS(calc(input_stream), std::invalid_argument);
+void it_takes_term_from_string() {
+	std::string term { "3-5" };
+	int result = calc(term);
+	ASSERT_EQUAL(-2, result);
+}
+void it_throws_when_given_invalid_term() {
+	std::vector<std::string> invalid_terms {
+		"foobar",
+		"3+2-",
+		"1",
+		"8--",
+		"*",
+		"4%%6",
+		"3//7",
+	};
+	for_each(invalid_terms.begin(), invalid_terms.end(), [](std::string term) {
+		ASSERT_THROWS(calc(term), std::exception);
+	});
 }
 
 void runAllTests(int argc, char const *argv[]){
@@ -57,7 +71,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(it_knows_modulo));
 	s.push_back(CUTE(it_throws_when_modulo_zero));
 	s.push_back(CUTE(it_takes_term_from_istream));
-	s.push_back(CUTE(it_throws_when_given_invalid_term_in_istream));
+	s.push_back(CUTE(it_throws_when_given_invalid_term));
+	s.push_back(CUTE(it_takes_term_from_string));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
