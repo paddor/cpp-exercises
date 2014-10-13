@@ -19,11 +19,9 @@ int calc(int a, int b, char operator_symbol) {
 	auto reason = std::string("invalid operator: ");
 	reason.push_back(operator_symbol);
 	throw std::invalid_argument{reason};
-};
+}
 
-// Just like calc(int, int, char), but gets the numbers and operator
-// from an input stream.
-int calc(std::istream& input) {
+int calc(std::istream &input) {
 	int a {0}, b {0};
 	char operator_symbol { };
 	input >> a >> operator_symbol >> b;

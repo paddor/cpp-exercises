@@ -3,7 +3,7 @@
 
 #include <istream>
 int calc(int a, int b, char operator_symbol);
-int calc(std::istream& input);
+int calc(std::istream &input);
 
 
 

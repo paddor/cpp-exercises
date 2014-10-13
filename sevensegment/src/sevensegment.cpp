@@ -62,7 +62,7 @@ std::vector< std::vector<std::string> > split_digits(int i) {
 	return split_digits(i, vector);
 }
 
-std::string lineOfLargeNumber(const std::vector< std::vector<std::string> >& digits_vector, unsigned line_nr, unsigned n){
+std::string lineOfLargeDigits(const std::vector< std::vector<std::string> > &digits_vector, unsigned line_nr, unsigned n){
 	std::string line {};
 	for_each(digits_vector.begin(), digits_vector.end(), [&](std::vector<std::string> digit){
 		line.append(stretchLine(digit[line_nr], n));
