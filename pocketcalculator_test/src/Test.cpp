@@ -10,47 +10,47 @@
 #include "pocketcalculator.h"
 
 namespace calc_tests {
-	void it_multiplies() {
+	void multiplies() {
 		ASSERT_EQUAL(20, calc(4, 5, '*'));
 		ASSERT_EQUAL(-30, calc(-6, 5, '*'));
 	}
-	void it_divides() {
+	void divides() {
 		ASSERT_EQUAL(5, calc(60, 12, '/'));
 		ASSERT_EQUAL(-3, calc(9, -3, '/'));
 	}
-	void it_throws_when_dividing_by_zero() {
+	void throws_when_dividing_by_zero() {
 		ASSERT_THROWS(calc(1, 0, '/'), std::domain_error);
 	}
-	void it_adds() {
+	void adds() {
 		ASSERT_EQUAL(5, calc(2, 3, '+'));
 		ASSERT_EQUAL(-10, calc(-6, -4, '+'));
 	}
-	void it_subtracts() {
+	void subtracts() {
 		ASSERT_EQUAL(17, calc(20, 3, '-'));
 		ASSERT_EQUAL(-5, calc(-2, 3, '-'));
 	}
-	void it_knows_modulo() {
+	void knows_modulo() {
 		ASSERT_EQUAL(5, calc(15, 10, '%'));
 		ASSERT_EQUAL(-5, calc(-15, 10, '%'));
 	}
-	void it_throws_when_modulo_zero() {
+	void throws_when_modulo_zero() {
 		ASSERT_THROWS(calc(10, 0, '%'), std::domain_error);
 	}
-	void it_throws_when_given_invalid_operator() {
+	void throws_when_given_invalid_operator() {
 		ASSERT_THROWS(calc(1, 1, '^'), std::invalid_argument);
 	}
 
-	void it_takes_term_from_istream() {
+	void takes_term_from_istream() {
 		std::istringstream term_stream { "1+1" };
 		int result = calc(term_stream);
 		ASSERT_EQUAL(2, result);
 	}
-	void it_takes_term_from_string() {
+	void takes_term_from_string() {
 		std::string term { "3-5" };
 		int result = calc(term);
 		ASSERT_EQUAL(-2, result);
 	}
-	void it_throws_when_given_invalid_term() {
+	void throws_when_given_invalid_term() {
 		std::vector<std::string> invalid_terms {
 			"foobar",
 			"3+2-",
@@ -66,17 +66,17 @@ namespace calc_tests {
 	}
 
 	void add_tests_to_suite(cute::suite &s) {
-		s.push_back(CUTE(it_multiplies));
-		s.push_back(CUTE(it_divides));
-		s.push_back(CUTE(it_throws_when_dividing_by_zero));
-		s.push_back(CUTE(it_adds));
-		s.push_back(CUTE(it_subtracts));
-		s.push_back(CUTE(it_throws_when_given_invalid_operator));
-		s.push_back(CUTE(it_knows_modulo));
-		s.push_back(CUTE(it_throws_when_modulo_zero));
-		s.push_back(CUTE(it_takes_term_from_istream));
-		s.push_back(CUTE(it_throws_when_given_invalid_term));
-		s.push_back(CUTE(it_takes_term_from_string));
+		s.push_back(CUTE(multiplies));
+		s.push_back(CUTE(divides));
+		s.push_back(CUTE(throws_when_dividing_by_zero));
+		s.push_back(CUTE(adds));
+		s.push_back(CUTE(subtracts));
+		s.push_back(CUTE(throws_when_given_invalid_operator));
+		s.push_back(CUTE(knows_modulo));
+		s.push_back(CUTE(throws_when_modulo_zero));
+		s.push_back(CUTE(takes_term_from_istream));
+		s.push_back(CUTE(throws_when_given_invalid_term));
+		s.push_back(CUTE(takes_term_from_string));
 	}
 }
 
@@ -105,7 +105,7 @@ namespace sevensegment_tests {
 		" -- \n"
 	};
 
-	void it_prints_digit() {
+	void prints_digit() {
 		std::ostringstream output {};
 		sevensegment::printLargeDigit(8, output);
 		ASSERT_EQUAL(large_8, output.str());
@@ -113,16 +113,16 @@ namespace sevensegment_tests {
 		sevensegment::printLargeDigit(1, output);
 		ASSERT_EQUAL(large_1, output.str());
 	}
-	void it_prints_scaled_digit() {
+	void prints_scaled_digit() {
 		std::ostringstream output {};
 		sevensegment::printLargeDigit(3, output, 2);
 		ASSERT_EQUAL(large_3_scale2, output.str());
 	}
-	void it_throws_when_digit_out_of_range() {
+	void throws_when_digit_out_of_range() {
 		std::ostringstream output {};
 		ASSERT_THROWS(sevensegment::printLargeDigit(10,output), std::out_of_range);
 	}
-	void it_throws_when_scale_out_of_range() {
+	void throws_when_scale_out_of_range() {
 		std::ostringstream output {};
 		ASSERT_THROWS(sevensegment::printLargeDigit(5,output, 0), std::invalid_argument);
 	}
@@ -143,13 +143,13 @@ namespace sevensegment_tests {
 	"    -  - \n"
 	};
 
-	void it_prints_number() {
+	void prints_number() {
 		std::ostringstream output {};
 		sevensegment::printLargeNumber(54321, output);
 		ASSERT_EQUAL(large_number, output.str());
 	}
 
-	void it_prints_negative_number() {
+	void prints_negative_number() {
 		std::ostringstream output {};
 		sevensegment::printLargeNumber(-33, output);
 		ASSERT_EQUAL(large_negative_number, output.str());
@@ -163,20 +163,20 @@ namespace sevensegment_tests {
 		" -        -    \n"
 	};
 
-	void it_prints_error() {
+	void prints_error() {
 		std::ostringstream output {};
 		sevensegment::printLargeError(output);
 		ASSERT_EQUAL(large_error, output.str());
 	}
 
 	void add_tests_to_suite(cute::suite &s) {
-		s.push_back(CUTE(it_prints_digit));
-		s.push_back(CUTE(it_prints_scaled_digit));
-		s.push_back(CUTE(it_throws_when_digit_out_of_range));
-		s.push_back(CUTE(it_throws_when_scale_out_of_range));
-		s.push_back(CUTE(it_prints_number));
-		s.push_back(CUTE(it_prints_negative_number));
-		s.push_back(CUTE(it_prints_error));
+		s.push_back(CUTE(prints_digit));
+		s.push_back(CUTE(prints_scaled_digit));
+		s.push_back(CUTE(throws_when_digit_out_of_range));
+		s.push_back(CUTE(throws_when_scale_out_of_range));
+		s.push_back(CUTE(prints_number));
+		s.push_back(CUTE(prints_negative_number));
+		s.push_back(CUTE(prints_error));
 	}
 }
 
