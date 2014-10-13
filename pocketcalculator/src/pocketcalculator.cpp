@@ -33,7 +33,7 @@ namespace pocketcalculator {
 
 	void start(std::istream &input, std::ostream &output, unsigned n) {
 		n = preprocess_scale(n);
-		while (input && !input.eof()) {
+		while (!input.eof()) {
 			output << "Please type your input term: ";
 			calc(input, output, n);
 		}
