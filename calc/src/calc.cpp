@@ -1,6 +1,5 @@
 #include "calc.h"
 #include <stdexcept>
-#include <string>
 #include <sstream>
 
 // Calculates the result of two numbers a and b and basic math operator.
