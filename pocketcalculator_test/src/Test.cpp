@@ -246,7 +246,8 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output, 4);
-		ASSERT_NOT_EQUAL_TO(std::string::npos, output.str().find(large_2_scale4));
+		ASSERT_NOT_EQUAL_TO(std::string::npos,
+				output.str().find(large_2_scale4));
 	}
 
 	const std::string large_2_scale2 {
@@ -263,7 +264,8 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output, 0);
-		ASSERT_NOT_EQUAL_TO(std::string::npos, output.str().find(large_2_scale2));
+		ASSERT_NOT_EQUAL_TO(std::string::npos,
+				output.str().find(large_2_scale2));
 	}
 
 	void add_tests_to_suite(cute::suite &s) {

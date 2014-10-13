@@ -56,10 +56,14 @@ namespace sevensegment {
 		return split_digits(i, vector);
 	}
 
-	std::string lineOfLargeDigits(const std::vector<digit_t> &digits_vector, unsigned line_nr, unsigned n){
+	std::string lineOfLargeDigits(const std::vector<digit_t> &digits_vector,
+			unsigned line_nr, unsigned n){
+
 		std::string line {};
 		unsigned digit_nr { 0 };
-		for_each(digits_vector.begin(), digits_vector.end(), [&](digit_t digit){
+		for_each(digits_vector.begin(), digits_vector.end(),
+				[&](digit_t digit){
+
 			line.append(stretchLine(digit[line_nr], n));
 
 			// between digits (not at the end)
@@ -69,14 +73,18 @@ namespace sevensegment {
 		return line;
 	}
 
-	void printDigitSequence(std::vector<digit_t> digits_vector, std::ostream &out, unsigned n){
+	void printDigitSequence(std::vector<digit_t> digits_vector,
+			std::ostream &out, unsigned n){
+
 		if (n<1) throw std::invalid_argument { "invalid scale" };
 		unsigned line_nr {0};
 		std::ostream_iterator<std::string> out_it(out, "\n");
 
 		// iterate through lines, not digits
 		// OPTIMIZE: transpose vector first
-		for_each(digits_vector.front().begin(), digits_vector.front().end(), [&](std::string){
+		for_each(digits_vector.front().begin(), digits_vector.front().end(),
+				[&](std::string){
+
 			if (line_nr == 1 || line_nr == 3) {
 				auto line = lineOfLargeDigits(digits_vector, line_nr, n);
 				std::generate_n(out_it, n, [&](){return line;});
