@@ -27,10 +27,6 @@ std::string stretchLine(const std::string &line, unsigned n) {
 	return stretched_line;
 }
 
-void printLargeDigit(unsigned i, std::ostream &out) {
-	printLargeDigit(i, out, 1);
-}
-
 void printLargeDigit(unsigned i, std::ostream &out, unsigned n) {
 	auto digit = digits.at(i);
 	std::ostream_iterator<std::string> out_it(out, "\n");
@@ -71,22 +67,22 @@ std::string lineOfLargeDigits(const std::vector< std::vector<std::string> > &dig
 	return line;
 }
 
-void printLargeNumber(int i, std::ostream &out) {
-	printLargeNumber(i, out, 1);
 
-}
-
-void printLargeNumber(int i, std::ostream &out, unsigned n) {
-	auto digits_vector = split_digits(i);
+void printDigitSequence(std::vector< std::vector<std::string> > digits_vector, std::ostream &out, unsigned n){
 	unsigned line_nr {0};
 	std::ostream_iterator<std::string> out_it(out, "\n");
 	for_each(digits_vector.front().begin(), digits_vector.front().end(), [&](std::string _){
 		if (line_nr == 1 || line_nr == 3) {
-			auto line = lineOfLargeNumber(digits_vector, line_nr, n);
+			auto line = lineOfLargeDigits(digits_vector, line_nr, n);
 			std::generate_n(out_it, n, [&](){return line;});
 		} else {
-			out << lineOfLargeNumber(digits_vector, line_nr, n) << '\n';
+			out << lineOfLargeDigits(digits_vector, line_nr, n) << '\n';
 		}
 		line_nr++;
 	});
+}
+
+void printLargeNumber(int i, std::ostream &out, unsigned n) {
+	auto digits_vector = split_digits(i);
+	printDigitSequence(digits_vector, out, n);
 }

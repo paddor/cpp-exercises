@@ -3,14 +3,11 @@
 
 #include <iosfwd>
 
-void printLargeDigit(unsigned i, std::ostream &out);
-
 // n: scale factor
-void printLargeDigit(unsigned i, std::ostream &out, unsigned n);
+void printLargeDigit(unsigned i, std::ostream &out, unsigned n=1);
 
 // same for numbers
-void printLargeNumber(int i, std::ostream &out);
-void printLargeNumber(int i, std::ostream &out, unsigned n);
+void printLargeNumber(int i, std::ostream &out, unsigned n=1);
 
 
 #endif /* SEVENSEGMENT_H_ */
