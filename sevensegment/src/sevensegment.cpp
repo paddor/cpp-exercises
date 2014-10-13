@@ -66,6 +66,7 @@ namespace sevensegment {
 
 
 	void printDigitSequence(std::vector< std::vector<std::string> > digits_vector, std::ostream &out, unsigned n){
+		if (n<1) throw std::invalid_argument { "invalid scale" };
 		unsigned line_nr {0};
 		std::ostream_iterator<std::string> out_it(out, "\n");
 
