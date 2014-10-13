@@ -181,7 +181,24 @@ namespace sevensegment_tests {
 }
 
 namespace pocketcalculator_tests {
+	const std::string large_output {
+		" --   -- \n"
+		"   |    |\n"
+		"   |    |\n"
+		" --   -- \n"
+		"|    |   \n"
+		"|    |   \n"
+		" --   -- \n"
+	};
+	void reads_from_istream_and_writes_large_result_to_ostream() {
+		std::ostringstream output {};
+		std::istringstream input { "2+20" };
+		pocketcalculator::start(input, output);
+		std::cout << output.str();
+		ASSERT(output.str().find(large_output) != std::string::npos);
+	}
 	void add_tests_to_suite(cute::suite &s) {
+		s.push_back(CUTE(reads_from_istream_and_writes_large_result_to_ostream));
 	}
 }
 
