@@ -7,7 +7,8 @@
 
 namespace sevensegment {
 
-	const std::vector< std::vector<std::string> > digits {
+	typedef std::vector<std::string> digit_t;
+	const std::vector<digit_t> digits {
 		{ " - ", "| |", "   ", "| |", " - " }, // 0
 		{ "   ", "  |", "   ", "  |", "   " }, // 1
 		{ " - ", "  |", " - ", "|  ", " - " }, // 2
@@ -19,10 +20,10 @@ namespace sevensegment {
 		{ " - ", "| |", " - ", "| |", " - " }, // 8
 		{ " - ", "| |", " - ", "  |", " - " }  // 9
 	};
-	const std::vector<std::string> minus_sign
+	const digit_t minus_sign
 		{ "   ", "   ", " - ", "   ", "   " }; // -
 
-	const std::vector< std::vector<std::string> > error {
+	const std::vector<digit_t> error {
 		{ " - ", "|  ", " - ", "|  ", " - " }, // E
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
@@ -37,7 +38,7 @@ namespace sevensegment {
 		return stretched_line;
 	}
 
-	std::vector< std::vector<std::string> > split_digits(int i, std::vector< std::vector<std::string> > &vector) {
+	std::vector<digit_t> split_digits(int i, std::vector<digit_t> &vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
 
@@ -45,8 +46,8 @@ namespace sevensegment {
 	    return vector;
 	}
 
-	std::vector< std::vector<std::string> > split_digits(int i) {
-		std::vector< std::vector<std::string> > vector {};
+	std::vector<digit_t> split_digits(int i) {
+		std::vector<digit_t> vector {};
 		if (i<0) {
 			vector.push_back(minus_sign);
 			i = -i;
@@ -55,10 +56,10 @@ namespace sevensegment {
 		return split_digits(i, vector);
 	}
 
-	std::string lineOfLargeDigits(const std::vector< std::vector<std::string> > &digits_vector, unsigned line_nr, unsigned n){
+	std::string lineOfLargeDigits(const std::vector<digit_t> &digits_vector, unsigned line_nr, unsigned n){
 		std::string line {};
 		unsigned digit_nr { 0 };
-		for_each(digits_vector.begin(), digits_vector.end(), [&](std::vector<std::string> digit){
+		for_each(digits_vector.begin(), digits_vector.end(), [&](digit_t digit){
 			line.append(stretchLine(digit[line_nr], n));
 
 			// between digits (not at the end)
@@ -68,7 +69,7 @@ namespace sevensegment {
 		return line;
 	}
 
-	void printDigitSequence(std::vector< std::vector<std::string> > digits_vector, std::ostream &out, unsigned n){
+	void printDigitSequence(std::vector<digit_t> digits_vector, std::ostream &out, unsigned n){
 		if (n<1) throw std::invalid_argument { "invalid scale" };
 		unsigned line_nr {0};
 		std::ostream_iterator<std::string> out_it(out, "\n");
