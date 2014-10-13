@@ -1,0 +1,21 @@
+<testsuites>
+	<testsuite name="AllTests" tests="17">
+		<testcase classname="AllTests" name="calc_tests::it_multiplies"/>
+		<testcase classname="AllTests" name="calc_tests::it_divides"/>
+		<testcase classname="AllTests" name="calc_tests::it_throws_when_dividing_by_zero"/>
+		<testcase classname="AllTests" name="calc_tests::it_adds"/>
+		<testcase classname="AllTests" name="calc_tests::it_subtracts"/>
+		<testcase classname="AllTests" name="calc_tests::it_throws_when_given_invalid_operator"/>
+		<testcase classname="AllTests" name="calc_tests::it_knows_modulo"/>
+		<testcase classname="AllTests" name="calc_tests::it_throws_when_modulo_zero"/>
+		<testcase classname="AllTests" name="calc_tests::it_takes_term_from_istream"/>
+		<testcase classname="AllTests" name="calc_tests::it_throws_when_given_invalid_term"/>
+		<testcase classname="AllTests" name="calc_tests::it_takes_term_from_string"/>
+		<testcase classname="AllTests" name="sevensegment_tests::it_prints_digit"/>
+		<testcase classname="AllTests" name="sevensegment_tests::it_prints_scaled_digit"/>
+		<testcase classname="AllTests" name="sevensegment_tests::it_throws_when_digit_out_of_range"/>
+		<testcase classname="AllTests" name="sevensegment_tests::it_prints_number"/>
+		<testcase classname="AllTests" name="sevensegment_tests::it_prints_negative_number"/>
+		<testcase classname="AllTests" name="sevensegment_tests::it_prints_error"/>
+	</testsuite>
+</testsuites>
