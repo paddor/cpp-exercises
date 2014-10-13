@@ -194,7 +194,6 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input { "2+20" };
 		pocketcalculator::start(input, output);
-		std::cout << output.str();
 		ASSERT(output.str().find(large_output) != std::string::npos);
 	}
 	void add_tests_to_suite(cute::suite &s) {
