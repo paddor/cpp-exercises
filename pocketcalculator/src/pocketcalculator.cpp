@@ -11,9 +11,9 @@ namespace pocketcalculator {
 		std::string term {};
 		std::getline(input, term);
 		auto result = calc(term);
-		printLargeNumber(result, output, n);
+		sevensegment::printLargeNumber(result, output, n);
 	} catch(std::logic_error&) {
-		printLargeError(output, n);
+		sevensegment::printLargeError(output, n);
 	}
 
 	const unsigned default_scale { 2 };
