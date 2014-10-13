@@ -64,6 +64,20 @@ namespace calc_tests {
 			ASSERT_THROWS(calc(term), std::exception);
 		});
 	}
+
+	void add_tests_to_suite(cute::suite &s) {
+		s.push_back(CUTE(it_multiplies));
+		s.push_back(CUTE(it_divides));
+		s.push_back(CUTE(it_throws_when_dividing_by_zero));
+		s.push_back(CUTE(it_adds));
+		s.push_back(CUTE(it_subtracts));
+		s.push_back(CUTE(it_throws_when_given_invalid_operator));
+		s.push_back(CUTE(it_knows_modulo));
+		s.push_back(CUTE(it_throws_when_modulo_zero));
+		s.push_back(CUTE(it_takes_term_from_istream));
+		s.push_back(CUTE(it_throws_when_given_invalid_term));
+		s.push_back(CUTE(it_takes_term_from_string));
+	}
 }
 
 namespace sevensegment_tests {
@@ -150,34 +164,27 @@ namespace sevensegment_tests {
 		sevensegment::printLargeError(output);
 		ASSERT_EQUAL(large_error, output.str());
 	}
+
+	void add_tests_to_suite(cute::suite &s) {
+		s.push_back(CUTE(it_prints_digit));
+		s.push_back(CUTE(it_prints_scaled_digit));
+		s.push_back(CUTE(it_throws_when_digit_out_of_range));
+		s.push_back(CUTE(it_prints_number));
+		s.push_back(CUTE(it_prints_negative_number));
+		s.push_back(CUTE(it_prints_error));
+	}
+}
+
+namespace pocketcalculator_tests {
+	void add_tests_to_suite(cute::suite &s) {
+	}
 }
 
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s {};
-
-	// calc tests
-	s.push_back(CUTE(calc_tests::it_multiplies));
-	s.push_back(CUTE(calc_tests::it_divides));
-	s.push_back(CUTE(calc_tests::it_throws_when_dividing_by_zero));
-	s.push_back(CUTE(calc_tests::it_adds));
-	s.push_back(CUTE(calc_tests::it_subtracts));
-	s.push_back(CUTE(calc_tests::it_throws_when_given_invalid_operator));
-	s.push_back(CUTE(calc_tests::it_knows_modulo));
-	s.push_back(CUTE(calc_tests::it_throws_when_modulo_zero));
-	s.push_back(CUTE(calc_tests::it_takes_term_from_istream));
-	s.push_back(CUTE(calc_tests::it_throws_when_given_invalid_term));
-	s.push_back(CUTE(calc_tests::it_takes_term_from_string));
-
-	// sevensegment tests
-	s.push_back(CUTE(sevensegment_tests::it_prints_digit));
-	s.push_back(CUTE(sevensegment_tests::it_prints_scaled_digit));
-	s.push_back(CUTE(sevensegment_tests::it_throws_when_digit_out_of_range));
-	s.push_back(CUTE(sevensegment_tests::it_prints_number));
-	s.push_back(CUTE(sevensegment_tests::it_prints_negative_number));
-	s.push_back(CUTE(sevensegment_tests::it_prints_error));
-
-	// pocketcalculator tests
-	// @todo add pocketcalculator tests
+	calc_tests::add_tests_to_suite(s);
+	sevensegment_tests::add_tests_to_suite(s);
+	pocketcalculator_tests::add_tests_to_suite(s);
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
