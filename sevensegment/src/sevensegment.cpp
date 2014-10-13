@@ -7,7 +7,7 @@
 
 namespace sevensegment {
 
-	const static std::vector< std::vector<std::string> > digits {
+	const std::vector< std::vector<std::string> > digits {
 		{ " - ", "| |", "   ", "| |", " - " }, // 0
 		{ "   ", "  |", "   ", "  |", "   " }, // 1
 		{ " - ", "  |", " - ", "|  ", " - " }, // 2
@@ -19,10 +19,10 @@ namespace sevensegment {
 		{ " - ", "| |", " - ", "| |", " - " }, // 8
 		{ " - ", "| |", " - ", "  |", " - " }  // 9
 	};
-	const static std::vector<std::string> minus_sign
+	const std::vector<std::string> minus_sign
 		{ "   ", "   ", " - ", "   ", "   " }; // -
 
-	const static std::vector< std::vector<std::string> > error {
+	const std::vector< std::vector<std::string> > error {
 		{ " - ", "|  ", " - ", "|  ", " - " }, // E
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
