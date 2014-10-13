@@ -6,11 +6,11 @@
 #include "sevensegment.h"
 
 namespace pocketcalculator {
-	void display_result_for(std::istream &input, std::ostream &output, unsigned n)
+	void calc(std::istream &input, std::ostream &output, unsigned n)
 	try {
 		std::string term {};
 		std::getline(input, term);
-		auto result = calc(term);
+		auto result = ::calc(term);
 		sevensegment::printLargeNumber(result, output, n);
 	} catch(std::logic_error&) {
 		sevensegment::printLargeError(output, n);
@@ -35,7 +35,7 @@ namespace pocketcalculator {
 		n = preprocess_scale(n);
 		while (input && !input.eof()) {
 			output << "Please type your input term: ";
-			display_result_for(input, output, n);
+			calc(input, output, n);
 		}
 	}
 }
