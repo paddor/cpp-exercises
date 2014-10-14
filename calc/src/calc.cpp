@@ -4,7 +4,7 @@
 #include <istream>
 
 // Calculates the result of two numbers a and b and basic math operator.
-int calc(int a, int b, char operator_symbol) {
+int calc(const int a, const int b, const char operator_symbol) {
 	switch (operator_symbol) {
 		case '*': return a * b;
 		case '/':

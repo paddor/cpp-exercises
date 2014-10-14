@@ -6,11 +6,11 @@
 #include "sevensegment.h"
 
 namespace pocketcalculator {
-	void calc(std::istream &input, std::ostream &output, unsigned n)
+	void calc(std::istream &input, std::ostream &output, const unsigned n)
 	try {
 		std::string term {};
 		std::getline(input, term);
-		auto result = ::calc(term);
+		const auto result = ::calc(term);
 		sevensegment::printLargeNumber(result, output, n);
 	} catch(std::logic_error&) {
 		sevensegment::printLargeError(output, n);
@@ -18,10 +18,10 @@ namespace pocketcalculator {
 
 	const unsigned default_scale { 2 };
 
-	unsigned preprocess_scale(unsigned n) {
+	unsigned preprocess_scale(const unsigned n) {
 		if (n>0) return n;
 
-		char* scale_env { getenv("POCKETCALCULATOR_SCALE") };
+		const char* scale_env { getenv("POCKETCALCULATOR_SCALE") };
 		if (scale_env == nullptr) return default_scale;
 
 		std::string scale_env_string { scale_env };

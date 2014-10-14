@@ -31,14 +31,14 @@ namespace sevensegment {
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 	};
 
-	std::string stretchLine(const std::string &line, unsigned n) {
+	std::string stretchLine(const std::string &line, const unsigned n) {
 		std::string stretched_line(n+2, line[1]);
 		stretched_line.front() = line[0];
 		stretched_line.back() = line[2];
 		return stretched_line;
 	}
 
-	std::vector<digit_t> split_digits(int i, std::vector<digit_t> &vector) {
+	std::vector<digit_t> split_digits(const int i, std::vector<digit_t> &vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
 
@@ -57,7 +57,7 @@ namespace sevensegment {
 	}
 
 	std::string lineOfLargeDigits(const std::vector<digit_t> &digits_vector,
-			unsigned line_nr, unsigned n){
+			const unsigned line_nr, const unsigned n){
 
 		std::string line {};
 		unsigned digit_nr { 0 };
@@ -74,7 +74,7 @@ namespace sevensegment {
 	}
 
 	void printDigitSequence(std::vector<digit_t> digits_vector,
-			std::ostream &out, unsigned n){
+			std::ostream &out, const unsigned n){
 
 		if (n<1) throw std::invalid_argument { "invalid scale" };
 		unsigned line_nr {0};
@@ -86,7 +86,7 @@ namespace sevensegment {
 				[&](std::string){
 
 			if (line_nr == 1 || line_nr == 3) {
-				auto line = lineOfLargeDigits(digits_vector, line_nr, n);
+				const auto line = lineOfLargeDigits(digits_vector, line_nr, n);
 				std::generate_n(out_it, n, [&](){return line;});
 			} else {
 				out << lineOfLargeDigits(digits_vector, line_nr, n) << '\n';
@@ -95,18 +95,18 @@ namespace sevensegment {
 		});
 	}
 
-	void printLargeDigit(unsigned i, std::ostream &out, unsigned n) {
+	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned n) {
 		auto digit = digits.at(i);
 		std::vector< std::vector<std::string> > single_digit_vector { digit };
 		printDigitSequence(single_digit_vector, out, n);
 	}
 
-	void printLargeNumber(int i, std::ostream &out, unsigned n) {
+	void printLargeNumber(const int i, std::ostream &out, const unsigned n) {
 		auto digits_vector = split_digits(i);
 		printDigitSequence(digits_vector, out, n);
 	}
 
-	void printLargeError(std::ostream &out, unsigned n) {
+	void printLargeError(std::ostream &out, const unsigned n) {
 		printDigitSequence(error, out, n);
 	}
 }

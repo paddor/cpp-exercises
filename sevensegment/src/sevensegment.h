@@ -5,11 +5,11 @@
 
 namespace sevensegment {
 	// n: scale factor
-	void printLargeDigit(unsigned i, std::ostream &out, unsigned n=1);
+	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned n=1);
 
-	void printLargeNumber(int i, std::ostream &out, unsigned n=1);
+	void printLargeNumber(const int i, std::ostream &out, const unsigned n=1);
 
-	void printLargeError(std::ostream &out, unsigned n=1);
+	void printLargeError(std::ostream &out, const unsigned n=1);
 }
 
 #endif /* SEVENSEGMENT_H_ */
