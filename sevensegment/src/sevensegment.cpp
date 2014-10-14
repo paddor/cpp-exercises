@@ -31,7 +31,7 @@ namespace sevensegment {
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 	};
 
-	std::string stretchLine(const std::string &line, const unsigned n) {
+	std::string stretchDigitLine(const std::string &line, const unsigned n) {
 		std::string stretched_line(n+2, line[1]);
 		stretched_line.front() = line[0];
 		stretched_line.back() = line[2];
@@ -64,7 +64,7 @@ namespace sevensegment {
 		for_each(digits_vector.begin(), digits_vector.end(),
 				[&](digit_t digit){
 
-			line.append(stretchLine(digit[line_nr], n));
+			line.append(stretchDigitLine(digit[line_nr], n));
 
 			// between digits (not at the end)
 			if (++digit_nr != digits_vector.size())
