@@ -73,7 +73,7 @@ namespace sevensegment {
 		return line;
 	}
 
-	void printDigitSequence(std::vector<digit_t> digits_vector,
+	void printDigitSequence(const std::vector<digit_t> digits_vector,
 			std::ostream &out, const unsigned n){
 
 		if (n<1) throw std::invalid_argument { "invalid scale" };
@@ -96,13 +96,13 @@ namespace sevensegment {
 	}
 
 	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned n) {
-		auto digit = digits.at(i);
-		std::vector< std::vector<std::string> > single_digit_vector { digit };
+		const auto digit = digits.at(i);
+		const std::vector< std::vector<std::string> > single_digit_vector { digit };
 		printDigitSequence(single_digit_vector, out, n);
 	}
 
 	void printLargeNumber(const int i, std::ostream &out, const unsigned n) {
-		auto digits_vector = split_digits(i);
+		const auto digits_vector = split_digits(i);
 		printDigitSequence(digits_vector, out, n);
 	}
 
