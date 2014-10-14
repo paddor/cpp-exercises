@@ -214,6 +214,12 @@ namespace sevensegment_tests {
 		ASSERT_EQUAL(large_error, output.str());
 	}
 
+	void throws_when_too_many_digits_for_display() {
+		std::ostringstream output {};
+		ASSERT_THROWS(sevensegment::printLargeNumber(100000000, output, 1),
+				std::invalid_argument);
+	}
+
 	void add_tests_to_suite(cute::suite &s) {
 		s.push_back(CUTE(prints_digit));
 		s.push_back(CUTE(prints_scaled_digit));
@@ -222,6 +228,7 @@ namespace sevensegment_tests {
 		s.push_back(CUTE(prints_number));
 		s.push_back(CUTE(prints_negative_number));
 		s.push_back(CUTE(prints_error));
+		s.push_back(CUTE(throws_when_too_many_digits_for_display));
 	}
 }
 

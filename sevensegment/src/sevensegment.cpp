@@ -73,10 +73,15 @@ namespace sevensegment {
 		return line;
 	}
 
+	const unsigned display_size { 8 };
+
 	void printDigitSequence(const std::vector<digit_t> digits_vector,
 			std::ostream &out, const unsigned n){
 
 		if (n<1) throw std::invalid_argument { "invalid scale" };
+		if (digits_vector.size() > display_size)
+			throw std::invalid_argument { "too many digits" };
+
 		unsigned line_nr {0};
 		std::ostream_iterator<std::string> out_it(out, "\n");
 
