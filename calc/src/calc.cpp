@@ -34,5 +34,4 @@ int calc(std::istream &input) {
 int calc(std::string &term) {
 	std::istringstream term_stream { term };
 	return calc(term_stream);
-
 }
