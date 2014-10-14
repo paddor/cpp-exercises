@@ -10,9 +10,31 @@
 #include "pocketcalculator.h"
 
 namespace calc_tests {
-	void multiplies() {
+	using int_limits = std::numeric_limits<int>;
+	const int int_max { int_limits::max() }, int_min { int_limits::min() };
+	void multiplies_positive_numbers() {
 		ASSERT_EQUAL(20, calc(4, 5, '*'));
+	}
+	void multiplies_negative_with_positive_number() {
 		ASSERT_EQUAL(-30, calc(-6, 5, '*'));
+	}
+	void multiplies_negative_numbers() {
+		ASSERT_EQUAL(20, calc(-4, -5, '*'));
+	}
+	void recognizes_overflows_when_multiplying() {
+		calc(1, int_max, '*');
+		calc(1, int_min, '*');
+		calc(-1, int_max, '*');
+		calc(-1, int_min+1, '*');
+		calc(2, int_max/2, '*');
+		calc(2, int_min/2, '*');
+		calc(-2, int_max/2, '*');
+		calc(-2, int_min/2+1, '*');
+
+		ASSERT_THROWS(calc(4, int_max/3, '*'), std::invalid_argument);
+		ASSERT_THROWS(calc(4, int_min/3, '*'), std::invalid_argument);
+		ASSERT_THROWS(calc(-4, int_max/3, '*'), std::invalid_argument);
+		ASSERT_THROWS(calc(-4, int_min/3, '*'), std::invalid_argument);
 	}
 	void divides() {
 		ASSERT_EQUAL(5, calc(60, 12, '/'));
@@ -25,9 +47,21 @@ namespace calc_tests {
 		ASSERT_EQUAL(5, calc(2, 3, '+'));
 		ASSERT_EQUAL(-10, calc(-6, -4, '+'));
 	}
+	void recognizes_overflows_when_adding() {
+		calc(int_max, 0, '+'); // must not throw
+		ASSERT_THROWS(calc(int_max, 1, '+'), std::invalid_argument);
+		calc(int_min, 0, '+'); // must not throw
+		ASSERT_THROWS(calc(int_min, -1, '+'), std::invalid_argument);
+	}
 	void subtracts() {
 		ASSERT_EQUAL(17, calc(20, 3, '-'));
 		ASSERT_EQUAL(-5, calc(-2, 3, '-'));
+	}
+	void recognizes_overflows_when_subtracting() {
+		calc(int_max, 0, '-'); // must not throw
+		ASSERT_THROWS(calc(int_max, -1, '-'), std::invalid_argument);
+		calc(int_min, 0, '-'); // must not throw
+		ASSERT_THROWS(calc(int_min, 1, '-'), std::invalid_argument);
 	}
 	void knows_modulo() {
 		ASSERT_EQUAL(5, calc(15, 10, '%'));
@@ -70,11 +104,16 @@ namespace calc_tests {
 	}
 
 	void add_tests_to_suite(cute::suite &s) {
-		s.push_back(CUTE(multiplies));
+		s.push_back(CUTE(multiplies_positive_numbers));
+		s.push_back(CUTE(multiplies_negative_with_positive_number));
+		s.push_back(CUTE(multiplies_negative_numbers));
+		s.push_back(CUTE(recognizes_overflows_when_multiplying));
 		s.push_back(CUTE(divides));
 		s.push_back(CUTE(throws_when_dividing_by_zero));
 		s.push_back(CUTE(adds));
+		s.push_back(CUTE(recognizes_overflows_when_adding));
 		s.push_back(CUTE(subtracts));
+		s.push_back(CUTE(recognizes_overflows_when_subtracting));
 		s.push_back(CUTE(throws_when_given_invalid_operator));
 		s.push_back(CUTE(knows_modulo));
 		s.push_back(CUTE(throws_when_modulo_zero));
