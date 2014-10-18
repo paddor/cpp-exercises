@@ -1,3 +1,7 @@
+#include "calc.h"
+#include "sevensegment.h"
+#include "pocketcalculator.h"
+
 #include "cute.h"
 #include "ide_listener.h"
 #include "xml_listener.h"
@@ -5,9 +9,7 @@
 
 #include <string>
 #include <sstream>
-#include "calc.h"
-#include "sevensegment.h"
-#include "pocketcalculator.h"
+#include <limits>
 
 namespace calc_tests {
 	using int_limits = std::numeric_limits<int>;

@@ -1,9 +1,11 @@
+#include "calc.h"
+
 #include "cute.h"
 #include "ide_listener.h"
 #include "xml_listener.h"
 #include "cute_runner.h"
+
 #include <sstream>
-#include "calc.h"
 
 void it_multiplies() {
 	ASSERT_EQUAL(20, calc(4, 5, '*'));

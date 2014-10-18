@@ -1,9 +1,9 @@
+#include "sevensegment.h"
 #include <ostream>
 #include <vector>
 #include <string>
 #include <algorithm>
 #include <iterator>
-#include "sevensegment.h"
 
 namespace sevensegment {
 

@@ -1,9 +1,10 @@
+#include "pocketcalculator.h"
+#include "calc.h"
+#include "sevensegment.h"
 #include <iostream>
 #include <string>
 #include <stdexcept>
 #include <stdlib.h>
-#include "calc.h"
-#include "sevensegment.h"
 
 namespace pocketcalculator {
 	void calc(std::istream &input, std::ostream &output, const unsigned n)
