@@ -53,8 +53,3 @@ int calc(std::istream &input) {
 			throw std::invalid_argument{ "malformed input term"};
 	return calc(a, b, operator_symbol);
 }
-
-int calc(std::string &term) {
-	std::istringstream term_stream { term };
-	return calc(term_stream);
-}

@@ -81,11 +81,6 @@ namespace calc_tests {
 		int result = calc(term_stream);
 		ASSERT_EQUAL(2, result);
 	}
-	void takes_term_from_string() {
-		std::string term { "3-5" };
-		int result = calc(term);
-		ASSERT_EQUAL(-2, result);
-	}
 
 	const std::vector<std::string> invalid_terms {
         "foobar",
@@ -101,7 +96,8 @@ namespace calc_tests {
 		for_each(invalid_terms.begin(), invalid_terms.end(),
 				[](std::string term) {
 
-			ASSERT_THROWS(calc(term), std::exception);
+			std::istringstream term_stream { term };
+			ASSERT_THROWS(calc(term_stream), std::exception);
 		});
 	}
 
@@ -121,7 +117,6 @@ namespace calc_tests {
 		s.push_back(CUTE(throws_when_modulo_zero));
 		s.push_back(CUTE(takes_term_from_istream));
 		s.push_back(CUTE(throws_when_given_invalid_term));
-		s.push_back(CUTE(takes_term_from_string));
 	}
 }
 

@@ -9,9 +9,7 @@
 namespace pocketcalculator {
 	void calc(std::istream &input, std::ostream &output, const unsigned n)
 	try {
-		std::string term {};
-		std::getline(input, term);
-		const auto result = ::calc(term);
+		const auto result = ::calc(input);
 		sevensegment::printLargeNumber(result, output, n);
 	} catch(std::logic_error&) {
 		sevensegment::printLargeError(output, n);
