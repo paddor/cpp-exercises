@@ -48,8 +48,11 @@ int calc(const int a, const int b, const char operator_symbol) {
 int calc(std::istream &input) {
 	int a {0}, b {0};
 	char operator_symbol { };
-	input >> a >> operator_symbol >> b;
-	if (input.fail())
+	std::string term {};
+	std::getline(input, term);
+	std::istringstream term_input { term };
+	term_input >> a >> operator_symbol >> b;
+	if (term_input.fail() || !term_input.eof())
 			throw std::invalid_argument{ "malformed input term"};
 	return calc(a, b, operator_symbol);
 }
