@@ -87,17 +87,14 @@ namespace sevensegment {
 
 		// iterate through lines, not digits
 		// OPTIMIZE: transpose vector first
-		for_each(digits_vector.front().begin(), digits_vector.front().end(),
-				[&](std::string){
-
+		for(int line_nr = 0; line_nr < 5; ++line_nr) {
 			if (line_nr == 1 || line_nr == 3) {
 				const auto line = lineOfLargeDigits(digits_vector, line_nr, n);
 				std::generate_n(out_it, n, [&](){return line;});
 			} else {
 				out << lineOfLargeDigits(digits_vector, line_nr, n) << '\n';
 			}
-			line_nr++;
-		});
+		}
 	}
 
 	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned n) {
