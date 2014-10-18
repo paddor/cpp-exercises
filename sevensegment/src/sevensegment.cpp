@@ -31,8 +31,8 @@ namespace sevensegment {
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 	};
 
-	std::string stretchDigitLine(const std::string &line, const unsigned n) {
-		std::string stretched_line(n+2, line[1]);
+	std::string stretchDigitLine(const std::string &line, const unsigned scale_factor) {
+		std::string stretched_line(scale_factor+2, line[1]);
 		stretched_line.front() = line[0];
 		stretched_line.back() = line[2];
 		return stretched_line;
@@ -57,18 +57,18 @@ namespace sevensegment {
 	}
 
 	std::string lineOfLargeDigits(const std::vector<digit_t> &digits_vector,
-			const unsigned line_nr, const unsigned n){
+			const unsigned line_nr, const unsigned scale_factor){
 
 		std::string line {};
 		unsigned digit_nr { 0 };
 		for_each(digits_vector.begin(), digits_vector.end(),
 				[&](digit_t digit){
 
-			line.append(stretchDigitLine(digit[line_nr], n));
+			line.append(stretchDigitLine(digit[line_nr], scale_factor));
 
 			// between digits (not at the end)
 			if (++digit_nr != digits_vector.size())
-				line.append(n/2, ' '); // letter spacing for readability
+				line.append(scale_factor/2, ' '); // letter spacing for readability
 		});
 		return line;
 	}
@@ -76,9 +76,9 @@ namespace sevensegment {
 	const unsigned display_size { 8 };
 
 	void printDigitSequence(const std::vector<digit_t> digits_vector,
-			std::ostream &out, const unsigned n){
+			std::ostream &out, const unsigned scale_factor){
 
-		if (n<1) throw std::invalid_argument { "invalid scale" };
+		if (scale_factor<1) throw std::invalid_argument { "invalid scale" };
 		if (digits_vector.size() > display_size)
 			throw std::invalid_argument { "too many digits" };
 
@@ -89,26 +89,26 @@ namespace sevensegment {
 		// OPTIMIZE: transpose vector first
 		for(int line_nr = 0; line_nr < 5; ++line_nr) {
 			if (line_nr == 1 || line_nr == 3) {
-				const auto line = lineOfLargeDigits(digits_vector, line_nr, n);
-				std::generate_n(out_it, n, [&](){return line;});
+				const auto line = lineOfLargeDigits(digits_vector, line_nr, scale_factor);
+				std::generate_n(out_it, scale_factor, [&](){return line;});
 			} else {
-				out << lineOfLargeDigits(digits_vector, line_nr, n) << '\n';
+				out << lineOfLargeDigits(digits_vector, line_nr, scale_factor) << '\n';
 			}
 		}
 	}
 
-	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned n) {
+	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned scale_factor) {
 		const auto digit = digits.at(i);
 		const std::vector< std::vector<std::string> > single_digit_vector { digit };
-		printDigitSequence(single_digit_vector, out, n);
+		printDigitSequence(single_digit_vector, out, scale_factor);
 	}
 
-	void printLargeNumber(const int i, std::ostream &out, const unsigned n) {
+	void printLargeNumber(const int i, std::ostream &out, const unsigned scale_factor) {
 		const auto digits_vector = split_digits(i);
-		printDigitSequence(digits_vector, out, n);
+		printDigitSequence(digits_vector, out, scale_factor);
 	}
 
-	void printLargeError(std::ostream &out, const unsigned n) {
-		printDigitSequence(error, out, n);
+	void printLargeError(std::ostream &out, const unsigned scale_factor) {
+		printDigitSequence(error, out, scale_factor);
 	}
 }
