@@ -36,8 +36,8 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug.971573761" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug">
 								<option id="gnu.both.asm.option.include.paths.1789095034" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/src}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1102443972" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
 							</tool>
@@ -47,8 +47,8 @@
 								<option id="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level.2114970150" name="Debug Level" superClass="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.dialect.std.414764333" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1932748314" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/src}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1267170741" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
