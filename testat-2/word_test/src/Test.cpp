@@ -55,12 +55,12 @@ void it_converts_to_lowercase() {
 	ASSERT_EQUAL("foo", word.to_lower());
 }
 
-void it_outputs() {
-	std::ostringstream output {};
-	Word word { "foobar" };
-	output << word;
-	ASSERT_EQUAL("foobar", output.str());
-}
+//void it_outputs() {
+//	std::ostringstream output {};
+//	Word word { "foobar" };
+//	output << word;
+//	ASSERT_EQUAL("foobar", output.str());
+//}
 
 void it_inputs() {
 	std::istringstream input { "foobar" };
@@ -80,7 +80,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(it_compares));
 	s.push_back(CUTE(it_implicitly_converts_to_string));
 	s.push_back(CUTE(it_converts_to_lowercase));
-	s.push_back(CUTE(it_outputs));
+//	s.push_back(CUTE(it_outputs));
 	s.push_back(CUTE(it_inputs));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
