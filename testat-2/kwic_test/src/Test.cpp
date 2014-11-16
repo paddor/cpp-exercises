@@ -121,8 +121,8 @@ namespace kwic_tests {
 	  {{"foo"}, {"bar"}}
   };
   const std::string example_output {
-	  "bar foo\n"
-	  "foo bar\n"
+	  "bar foo \n"
+	  "foo bar \n"
 //    "a test this is\n"
 //    "another test this is\n"
 //    "is a test this\n"
