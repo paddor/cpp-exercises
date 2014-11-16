@@ -59,9 +59,9 @@ void KWIC::sort() {
 }
 
 void KWIC::print(std::ostream &output) {
-	for_each(_rotated_lines.cbegin(), _rotated_lines.cend(), [&](std::vector<Word> line){
-		std::ostream_iterator<Word> out_it {std::cout, " "};
-		copy(line.begin(), line.end(), out_it);
-		output << "\n";
-	});
+  std::ostream_iterator<Word> out_it { output, " "};
+  for_each(_rotated_lines.cbegin(), _rotated_lines.cend(), [&](std::vector<Word> line){
+    copy(line.begin(), line.end(), out_it);
+    output << "\n";
+  });
 }
