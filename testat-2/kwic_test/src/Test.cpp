@@ -150,7 +150,7 @@ namespace kwic_tests {
     	{{"bar"}, {"foo"}},
     	{{"foo"}, {"bar"}},
     };
-    ASSERT_EQUAL(rotated_and_sorted, k.rotated_lines);
+    ASSERT_EQUAL(rotated_and_sorted, k.rotated_lines());
   }
   void it_prints_correct_result() {
     KWIC k {};
