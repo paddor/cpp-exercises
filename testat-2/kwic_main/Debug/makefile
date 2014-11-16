@@ -40,8 +40,8 @@ endif
 all: kwic_main
 
 dependents:
-	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug && $(MAKE) all
-	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug && $(MAKE) all
+	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug && $(MAKE) clean all
+	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug && $(MAKE) clean all
 
 # Tool invocations
 kwic_main: $(OBJS) $(USER_OBJS) /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug/libkwic.dylib /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug/libword.dylib
