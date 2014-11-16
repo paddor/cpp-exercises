@@ -111,26 +111,22 @@ namespace word_tests {
 
 namespace kwic_tests {
   const std::string example_input {
-	"foo bar\n"
-//	"this is a test\n"
-//	"this is another test\n"
+	"this is a test\n"
+	"this is another test\n"
   };
   const std::vector< std::vector< ::Word > > example_input_lines {
-	  //{ {"this"}, {"is"}, {"a"}, {"test"} },
-	  //{ {"this"}, {"is"}, {"another"}, {"test"} }
-	  {{"foo"}, {"bar"}}
+	  { {"this"}, {"is"}, {"a"}, {"test"} },
+	  { {"this"}, {"is"}, {"another"}, {"test"} }
   };
   const std::string example_output {
-	  "bar foo \n"
-	  "foo bar \n"
-//    "a test this is\n"
-//    "another test this is\n"
-//    "is a test this\n"
-//    "is another test this\n"
-//    "test this is a\n"
-//    "test this is another\n"
-//    "this is a test\n"
-//    "this is another test\n"
+    "a test this is \n"
+    "another test this is \n"
+    "is a test this \n"
+    "is another test this \n"
+    "test this is a \n"
+    "test this is another \n"
+    "this is a test \n"
+    "this is another test \n"
   };
 
   void it_reads_lines() {
@@ -147,8 +143,14 @@ namespace kwic_tests {
     std::istringstream input { example_input };
     k.start(input, output);
     std::vector< std::vector< Word > > rotated_and_sorted {
-    	{{"bar"}, {"foo"}},
-    	{{"foo"}, {"bar"}},
+    {{"a"}, {"test"}, {"this"}, {"is"}},
+    {{"another"}, {"test"}, {"this"}, {"is"}},
+    {{"is"}, {"a"}, {"test"}, {"this"}},
+    {{"is"}, {"another"}, {"test"}, {"this"}},
+    {{"test"}, {"this"}, {"is"}, {"a"}},
+    {{"test"}, {"this"}, {"is"}, {"another"}},
+    {{"this"}, {"is"}, {"a"}, {"test"}},
+    {{"this"}, {"is"}, {"another"}, {"test"}}
     };
     ASSERT_EQUAL(rotated_and_sorted, k.rotated_lines());
   }
