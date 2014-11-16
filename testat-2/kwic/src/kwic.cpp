@@ -43,7 +43,7 @@ void KWIC::rotate() {
 	for_each(_input_lines.cbegin(), _input_lines.cend(), [this](std::vector< Word > input_line) {
 		for(int rotations = input_line.size(); rotations > 0; rotations--) {
 			std::vector< Word > rotated_line {};
-			std::rotate_copy(input_line.begin(), input_line.begin() + rotations - 1, rotations,
+			std::rotate_copy(input_line.begin(), input_line.begin() + (rotations - 1),
 					input_line.end(), std::back_inserter(rotated_line));
 			std::cout << "Adding rotated line: \n";
 			for_each(rotated_line.begin(), rotated_line.end(), [&](Word word) {
