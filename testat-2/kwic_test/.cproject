@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="cdt.managedbuild.config.gnu.macosx.exe.debug.857223628">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.macosx.exe.debug.857223628" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.macosx.exe.debug.857223628" name="Debug" parent="cdt.managedbuild.config.gnu.macosx.exe.debug">
+					<folderInfo id="cdt.managedbuild.config.gnu.macosx.exe.debug.857223628." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.macosx.exe.debug.1456062721" name="MacOSX GCC" superClass="cdt.managedbuild.toolchain.gnu.macosx.exe.debug">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.macosx.exe.debug.119471309" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.macosx.exe.debug"/>
+							<builder buildPath="${workspace_loc:/kwic_test}/Debug" id="cdt.managedbuild.target.gnu.builder.macosx.exe.debug.1399873477" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.macosx.exe.debug"/>
+							<tool id="cdt.managedbuild.tool.macosx.c.linker.macosx.exe.debug.1385410291" name="MacOS X C Linker" superClass="cdt.managedbuild.tool.macosx.c.linker.macosx.exe.debug">
+								<option id="macosx.c.link.option.paths.648748792" name="Library search path (-L)" superClass="macosx.c.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/Release}&quot;"/>
+								</option>
+								<option id="macosx.c.link.option.libs.435392422" name="Libraries (-l)" superClass="macosx.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="kwic"/>
+									<listOptionValue builtIn="false" value="word"/>
+								</option>
+							</tool>
+							<tool id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug.641115111" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug">
+								<option id="macosx.cpp.link.option.paths.360436249" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/Release}&quot;"/>
+								</option>
+								<option id="macosx.cpp.link.option.libs.1749395319" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="kwic"/>
+									<listOptionValue builtIn="false" value="word"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.1292852311" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug.1241159355" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug">
+								<option id="gnu.both.asm.option.include.paths.498296527" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic_test/cute}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/src}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.331838733" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.macosx.base.949090899" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.macosx.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug.1023304238" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug">
+								<option id="gnu.cpp.compilermacosx.exe.debug.option.optimization.level.405146866" name="Optimization Level" superClass="gnu.cpp.compilermacosx.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level.278778736" name="Debug Level" superClass="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.420878485" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic_test/cute}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/src}&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.dialect.std.66903141" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.991539486" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug.1912575990" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.macosx.exe.debug.option.optimization.level.1969418859" name="Optimization Level" superClass="gnu.c.compiler.macosx.exe.debug.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.macosx.exe.debug.option.debugging.level.472777133" name="Debug Level" superClass="gnu.c.compiler.macosx.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.888680781" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic_test/cute}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/kwic/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/word/src}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1272715293" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="kwic;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/kwic"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/kwic/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="kwic" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+				<externalSettings containerId="word;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/word"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/word/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="word" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="kwic_test.cdt.managedbuild.target.macosx.exe.1135005888" name="Executable" projectType="cdt.managedbuild.target.macosx.exe"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.857223628;cdt.managedbuild.config.gnu.macosx.exe.debug.857223628.;cdt.managedbuild.tool.gnu.cpp.compiler.macosx.exe.debug.1023304238;cdt.managedbuild.tool.gnu.cpp.compiler.input.991539486">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.macosx.exe.debug.857223628;cdt.managedbuild.config.gnu.macosx.exe.debug.857223628.;cdt.managedbuild.tool.gnu.c.compiler.macosx.exe.debug.1912575990;cdt.managedbuild.tool.gnu.c.compiler.input.1272715293">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/kwic_test"/>
+		</configuration>
+	</storageModule>
+</cproject>

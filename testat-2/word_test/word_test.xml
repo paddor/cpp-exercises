@@ -1,0 +1,14 @@
+<testsuites>
+	<testsuite name="AllTests" tests="10">
+		<testcase classname="AllTests" name="it_initializes_empty"/>
+		<testcase classname="AllTests" name="it_reads_input"/>
+		<testcase classname="AllTests" name="it_constructs_word_from_string"/>
+		<testcase classname="AllTests" name="it_throws_when_given_empty_string"/>
+		<testcase classname="AllTests" name="it_throws_when_given_invalid_characters"/>
+		<testcase classname="AllTests" name="it_compares"/>
+		<testcase classname="AllTests" name="it_implicitly_converts_to_string"/>
+		<testcase classname="AllTests" name="it_converts_to_lowercase"/>
+		<testcase classname="AllTests" name="it_outputs"/>
+		<testcase classname="AllTests" name="it_inputs"/>
+	</testsuite>
+</testsuites>
