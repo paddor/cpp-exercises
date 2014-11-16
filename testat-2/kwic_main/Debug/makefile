@@ -40,14 +40,14 @@ endif
 all: kwic_main
 
 dependents:
-	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/kwic/Debug && $(MAKE) clean all
-	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/word/Debug && $(MAKE) clean all
+	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug && $(MAKE) all
+	-cd /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug && $(MAKE) all
 
 # Tool invocations
-kwic_main: $(OBJS) $(USER_OBJS) /Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/kwic/Debug/libkwic.dylib /Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/word/Debug/libword.dylib
+kwic_main: $(OBJS) $(USER_OBJS) /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug/libkwic.dylib /Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug/libword.dylib
 	@echo 'Building target: $@'
 	@echo 'Invoking: MacOS X C++ Linker'
-	g++ -L"/Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/word/Debug" -L"/Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/kwic/Debug" -o "kwic_main" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"/Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug" -L"/Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug" -o "kwic_main" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -58,7 +58,7 @@ clean:
 
 .PHONY: all clean dependents
 .SECONDARY:
-/Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/kwic/Debug/libkwic.dylib:
-/Users/paddor/Schule/HSR/14-15/Prog3/workspace_testat_2/word/Debug/libword.dylib:
+/Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/kwic/Debug/libkwic.dylib:
+/Users/paddor/Schule/HSR/14-15/Prog3/workspace/testat-2/word/Debug/libword.dylib:
 
 -include ../makefile.targets
