@@ -1,5 +1,12 @@
-# eclipse
+# eclipse/Cevelop
 .metadata/
+.cproject
+.project
+.settings/
+cute/
+*test.xml
+Debug/
+Release/
 
 # Compiled Object files
 *.slo
@@ -29,3 +36,6 @@
 *.exe
 *.out
 *.app
+
+# OSX
+.DS_Store
