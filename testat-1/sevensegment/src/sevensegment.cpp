@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <iterator>
+#include <stdexcept>
 
 namespace sevensegment {
 
