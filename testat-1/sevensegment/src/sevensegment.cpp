@@ -139,7 +139,7 @@ namespace sevensegment {
 		return line;
 	}
 
-	const unsigned display_size { 8 };
+	constexpr unsigned display_size { 8 };
 
 	void printDigitSequence(const std::vector<digit> digits_vector,
 			std::ostream& out, const unsigned scale_factor){
