@@ -9,13 +9,12 @@ int sign(const int i) {
 }
 
 void throw_overflow_if(const bool condition) {
-	if (condition) throw std::invalid_argument { "overflow" };
+	if (condition) throw std::overflow_error { "overflow" };
 }
 
 // Calculates the result of two numbers a and b and basic math operator.
 int calc(const int a, const int b, const char operator_symbol) {
-	using int_limits = std::numeric_limits<int>;
-	const int int_max { int_limits::max() }, int_min { int_limits::min() };
+	using limits = std::numeric_limits<int>;
 
 	switch (operator_symbol) {
 		case '*': {
@@ -24,25 +23,24 @@ int calc(const int a, const int b, const char operator_symbol) {
 			return result;
 		}
 		case '/':
-			if (b == 0) throw std::domain_error{"division by zero"};
-			return a / b;
-		case '+':
-			throw_overflow_if((a >= 0) && (int_max - a < b));
-			throw_overflow_if((a <  0) && (b < int_min - a));
-			return a + b;
-		case '-': {
-			throw_overflow_if((a >= 0) && (int_max - a < -b));
-			throw_overflow_if((a  < 0) && (-b < int_min - a));
-			return a - b;
-		}
 		case '%':
 			if (b == 0) throw std::domain_error{"division by zero"};
-			return a % b;
+			if (operator_symbol == '/') return a / b;
+			else return a % b;
+		case '+':
+			throw_overflow_if((a >= 0) && (limits::max() - a < b));
+			throw_overflow_if((a <  0) && (b < limits::min() - a));
+			return a + b;
+		case '-':
+			throw_overflow_if((a >= 0) && (limits::max() - a < -b));
+			throw_overflow_if((a  < 0) && (-b < limits::min() - a));
+			return a - b;
+		default:
+			std::string reason { "invalid operator: " };
+			reason.push_back(operator_symbol);
+			throw std::runtime_error{reason};
 	}
 
-	auto reason = std::string("invalid operator: ");
-	reason.push_back(operator_symbol);
-	throw std::invalid_argument{reason};
 }
 
 int calc(std::istream &input) {
@@ -53,6 +51,6 @@ int calc(std::istream &input) {
 	std::istringstream term_input { term };
 	term_input >> a >> operator_symbol >> b;
 	if (term_input.fail() || !term_input.eof())
-			throw std::invalid_argument{ "malformed input term"};
+			throw std::runtime_error{ "malformed input term"};
 	return calc(a, b, operator_symbol);
 }

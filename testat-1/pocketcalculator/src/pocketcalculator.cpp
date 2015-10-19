@@ -11,30 +11,21 @@ namespace pocketcalculator {
 	try {
 		const auto result = ::calc(input);
 		sevensegment::printLargeNumber(result, output, n);
-	} catch(std::logic_error&) {
+	} catch(std::runtime_error&) {
 		sevensegment::printLargeError(output, n);
 	}
 
-	const unsigned default_scale { 2 };
-
-	unsigned preprocess_scale(const unsigned n) {
-		if (n>0) return n;
-
-		const char* scale_env { getenv("POCKETCALCULATOR_SCALE") };
-		if (scale_env == nullptr) return default_scale;
-
-		std::string scale_env_string { scale_env };
-		int scale {};
-		scale = std::stoi(scale_env);
-		if (scale < 1) throw std::invalid_argument { "invalid scale" };
-		return scale;
-	}
-
 	void start(std::istream &input, std::ostream &output, unsigned n) {
-		n = preprocess_scale(n);
 		while (!input.eof()) {
-			output << "Please type your input term: ";
+			output << "Please type your input term: "; // TODO: remove prompt
 			calc(input, output, n);
 		}
+	}
+
+	unsigned preferred_scale() {
+		if (const char* scale_ptr = getenv("POCKETCALCULATOR_SCALE") ) {
+			return std::stoul(std::string { scale_ptr });
+		}
+		return 0;
 	}
 }

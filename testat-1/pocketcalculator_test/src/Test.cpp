@@ -12,8 +12,8 @@
 #include <limits>
 
 namespace calc_tests {
-	using int_limits = std::numeric_limits<int>;
-	const int int_max { int_limits::max() }, int_min { int_limits::min() };
+	constexpr int max { std::numeric_limits<int>::max() },
+				  min { std::numeric_limits<int>::min() };
 	void multiplies_positive_numbers() {
 		ASSERT_EQUAL(20, calc(4, 5, '*'));
 	}
@@ -24,19 +24,19 @@ namespace calc_tests {
 		ASSERT_EQUAL(20, calc(-4, -5, '*'));
 	}
 	void recognizes_overflows_when_multiplying() {
-		calc(1, int_max, '*');
-		calc(1, int_min, '*');
-		calc(-1, int_max, '*');
-		calc(-1, int_min+1, '*');
-		calc(2, int_max/2, '*');
-		calc(2, int_min/2, '*');
-		calc(-2, int_max/2, '*');
-		calc(-2, int_min/2+1, '*');
+		calc(1, max, '*');
+		calc(1, min, '*');
+		calc(-1, max, '*');
+		calc(-1, min+1, '*');
+		calc(2, max/2, '*');
+		calc(2, min/2, '*');
+		calc(-2, max/2, '*');
+		calc(-2, min/2+1, '*');
 
-		ASSERT_THROWS(calc(4, int_max/3, '*'), std::invalid_argument);
-		ASSERT_THROWS(calc(4, int_min/3, '*'), std::invalid_argument);
-		ASSERT_THROWS(calc(-4, int_max/3, '*'), std::invalid_argument);
-		ASSERT_THROWS(calc(-4, int_min/3, '*'), std::invalid_argument);
+		ASSERT_THROWS(calc(4, max/3, '*'), std::overflow_error);
+		ASSERT_THROWS(calc(4, min/3, '*'), std::overflow_error);
+		ASSERT_THROWS(calc(-4, max/3, '*'), std::overflow_error);
+		ASSERT_THROWS(calc(-4, min/3, '*'), std::overflow_error);
 	}
 	void divides() {
 		ASSERT_EQUAL(5, calc(60, 12, '/'));
@@ -50,20 +50,20 @@ namespace calc_tests {
 		ASSERT_EQUAL(-10, calc(-6, -4, '+'));
 	}
 	void recognizes_overflows_when_adding() {
-		calc(int_max, 0, '+'); // must not throw
-		ASSERT_THROWS(calc(int_max, 1, '+'), std::invalid_argument);
-		calc(int_min, 0, '+'); // must not throw
-		ASSERT_THROWS(calc(int_min, -1, '+'), std::invalid_argument);
+		calc(max, 0, '+'); // must not throw
+		ASSERT_THROWS(calc(max, 1, '+'), std::overflow_error);
+		calc(min, 0, '+'); // must not throw
+		ASSERT_THROWS(calc(min, -1, '+'), std::overflow_error);
 	}
 	void subtracts() {
 		ASSERT_EQUAL(17, calc(20, 3, '-'));
 		ASSERT_EQUAL(-5, calc(-2, 3, '-'));
 	}
 	void recognizes_overflows_when_subtracting() {
-		calc(int_max, 0, '-'); // must not throw
-		ASSERT_THROWS(calc(int_max, -1, '-'), std::invalid_argument);
-		calc(int_min, 0, '-'); // must not throw
-		ASSERT_THROWS(calc(int_min, 1, '-'), std::invalid_argument);
+		calc(max, 0, '-'); // must not throw
+		ASSERT_THROWS(calc(max, -1, '-'), std::overflow_error);
+		calc(min, 0, '-'); // must not throw
+		ASSERT_THROWS(calc(min, 1, '-'), std::overflow_error);
 	}
 	void knows_modulo() {
 		ASSERT_EQUAL(5, calc(15, 10, '%'));
@@ -73,7 +73,7 @@ namespace calc_tests {
 		ASSERT_THROWS(calc(10, 0, '%'), std::domain_error);
 	}
 	void throws_when_given_invalid_operator() {
-		ASSERT_THROWS(calc(1, 1, '^'), std::invalid_argument);
+		ASSERT_THROWS(calc(1, 1, '^'), std::runtime_error);
 	}
 
 	void takes_term_from_istream() {
@@ -93,12 +93,10 @@ namespace calc_tests {
 	};
 
     void throws_when_given_invalid_term() {
-		for_each(invalid_terms.begin(), invalid_terms.end(),
-				[](std::string term) {
-
+		for(auto const term : invalid_terms) {
 			std::istringstream term_stream { term };
-			ASSERT_THROWS(calc(term_stream), std::exception);
-		});
+			ASSERT_THROWS(calc(term_stream), std::exception); // TODO: more specific?
+		}
 	}
 
 	void add_tests_to_suite(cute::suite &s) {
@@ -166,7 +164,7 @@ namespace sevensegment_tests {
 	void throws_when_scale_out_of_range() {
 		std::ostringstream output {};
 		ASSERT_THROWS(sevensegment::printLargeDigit(5,output, 0),
-				std::invalid_argument);
+				std::range_error);
 	}
 
 	const std::string large_number {
@@ -214,7 +212,7 @@ namespace sevensegment_tests {
 	void throws_when_too_many_digits_for_display() {
 		std::ostringstream output {};
 		ASSERT_THROWS(sevensegment::printLargeNumber(100000000, output, 1),
-				std::invalid_argument);
+				std::overflow_error);
 	}
 
 	void add_tests_to_suite(cute::suite &s) {
@@ -258,17 +256,14 @@ namespace pocketcalculator_tests {
 	};
 
 	void prints_error_on_invalid_input() {
-		std::ostringstream output {};
-		std::istringstream input {};
-		for_each(calc_tests::invalid_terms.begin(),
-				calc_tests::invalid_terms.end(), [&](std::string term) {
+		for(auto const term : calc_tests::invalid_terms) {
 
-			output.str("");
-			input.str(term); input.clear(); // clear error state flags
+			std::ostringstream output {};
+			std::istringstream input { term };
 			pocketcalculator::start(input, output);
 			ASSERT_NOT_EQUAL_TO(std::string::npos,
 					output.str().find(error_scale2));
-		});
+		}
 	}
 
 	const std::string large_2_scale4 {
@@ -303,10 +298,10 @@ namespace pocketcalculator_tests {
 		" -- \n"
 	};
 
-	void uses_default_scale_when_scale_0() {
+	void uses_default_scale_when_scale_omitted() {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
-		pocketcalculator::start(input, output, 0);
+		pocketcalculator::start(input, output);
 		ASSERT_NOT_EQUAL_TO(std::string::npos,
 				output.str().find(large_2_scale2));
 	}
@@ -315,8 +310,10 @@ namespace pocketcalculator_tests {
 		s.push_back(CUTE(gets_term_and_prints_result));
 		s.push_back(CUTE(prints_error_on_invalid_input));
 		s.push_back(CUTE(scales));
-		s.push_back(CUTE(uses_default_scale_when_scale_0));
+		s.push_back(CUTE(uses_default_scale_when_scale_omitted));
 	}
+
+	// TODO: add env scale test
 }
 
 void runAllTests(int argc, char const *argv[]){
