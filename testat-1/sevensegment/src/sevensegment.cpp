@@ -127,12 +127,13 @@ namespace sevensegment {
 
 		std::string line {};
 		unsigned digit_nr { 0 };
+		const auto number_of_digits = digits_vector.size();
 
 		for(digit d : digits_vector){
 			line.append(stretchDigitLine(d[line_nr], scale_factor));
 
 			// between digits (not at the end)
-			if (++digit_nr != digits_vector.size())
+			if (++digit_nr != number_of_digits)
 				line.append(scale_factor/2, ' '); // letter spacing for readability
 		}
 		return line;
