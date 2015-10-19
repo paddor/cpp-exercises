@@ -165,7 +165,7 @@ namespace sevensegment {
 
 	void printLargeDigit(const unsigned i, std::ostream& out, const unsigned scale_factor) {
 		const auto digit = digits.at(i);
-		const std::vector< std::vector<std::string> > single_digit_vector { digit };
+		const std::vector<digit> single_digit_vector { digit };
 		printDigitSequence(single_digit_vector, out, scale_factor);
 	}
 
