@@ -8,7 +8,7 @@
 
 namespace sevensegment {
 
-	typedef std::vector<std::string> digit_t;
+	typedef std::vector<std::string> digit_t; // TODO: using alias
 	const std::vector<digit_t> digits {
 		{ " - ", "| |", "   ", "| |", " - " }, // 0
 		{ "   ", "  |", "   ", "  |", "   " }, // 1
