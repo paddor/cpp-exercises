@@ -8,8 +8,8 @@
 
 namespace sevensegment {
 
-	typedef std::vector<std::string> digit_t; // TODO: using alias
-	const std::vector<digit_t> digits {
+	using digit = std::vector<std::string>;
+	const std::vector<digit> digits {
 		{ " - ", "| |", "   ", "| |", " - " }, // 0
 		{ "   ", "  |", "   ", "  |", "   " }, // 1
 		{ " - ", "  |", " - ", "|  ", " - " }, // 2
@@ -21,10 +21,10 @@ namespace sevensegment {
 		{ " - ", "| |", " - ", "| |", " - " }, // 8
 		{ " - ", "| |", " - ", "  |", " - " }  // 9
 	};
-	const digit_t minus_sign
+	const digit minus_sign
 		{ "   ", "   ", " - ", "   ", "   " }; // -
 
-	const std::vector<digit_t> error {
+	const std::vector<digit> error {
 		{ " - ", "|  ", " - ", "|  ", " - " }, // E
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
@@ -39,7 +39,7 @@ namespace sevensegment {
 		return stretched_line;
 	}
 
-	std::vector<digit_t> split_digits(const int i, std::vector<digit_t>& vector) {
+	std::vector<digit> split_digits(const int i, std::vector<digit>& vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
 
@@ -47,8 +47,8 @@ namespace sevensegment {
 	    return vector;
 	}
 
-	std::vector<digit_t> split_digits(int i) {
-		std::vector<digit_t> vector {};
+	std::vector<digit> split_digits(int i) {
+		std::vector<digit> vector {};
 		if (i<0) {
 			vector.push_back(minus_sign);
 			i = -i;
@@ -57,13 +57,13 @@ namespace sevensegment {
 		return split_digits(i, vector);
 	}
 
-	std::string lineOfLargeDigits(const std::vector<digit_t>& digits_vector,
+	std::string lineOfLargeDigits(const std::vector<digit>& digits_vector,
 			const unsigned line_nr, const unsigned scale_factor){
 
 		std::string line {};
 		unsigned digit_nr { 0 };
 		for_each(digits_vector.begin(), digits_vector.end(),
-				[&](digit_t digit){
+				[&](digit digit){
 
 			line.append(stretchDigitLine(digit[line_nr], scale_factor));
 
@@ -76,7 +76,7 @@ namespace sevensegment {
 
 	const unsigned display_size { 8 };
 
-	void printDigitSequence(const std::vector<digit_t> digits_vector,
+	void printDigitSequence(const std::vector<digit> digits_vector,
 			std::ostream& out, const unsigned scale_factor){
 
 		if (scale_factor<1) throw std::range_error { "invalid scale" };
