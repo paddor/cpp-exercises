@@ -11,7 +11,7 @@ namespace pocketcalculator {
 	try {
 		const auto result = ::calc(input);
 		sevensegment::printLargeNumber(result, output, n);
-	} catch(std::runtime_error&) {
+	} catch(std::exception&) {
 		sevensegment::printLargeError(output, n);
 	}
 
