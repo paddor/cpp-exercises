@@ -32,14 +32,14 @@ namespace sevensegment {
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 	};
 
-	std::string stretchDigitLine(const std::string &line, const unsigned scale_factor) {
+	std::string stretchDigitLine(const std::string& line, const unsigned scale_factor) {
 		std::string stretched_line(scale_factor+2, line[1]);
 		stretched_line.front() = line[0];
 		stretched_line.back() = line[2];
 		return stretched_line;
 	}
 
-	std::vector<digit_t> split_digits(const int i, std::vector<digit_t> &vector) {
+	std::vector<digit_t> split_digits(const int i, std::vector<digit_t>& vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
 
@@ -57,7 +57,7 @@ namespace sevensegment {
 		return split_digits(i, vector);
 	}
 
-	std::string lineOfLargeDigits(const std::vector<digit_t> &digits_vector,
+	std::string lineOfLargeDigits(const std::vector<digit_t>& digits_vector,
 			const unsigned line_nr, const unsigned scale_factor){
 
 		std::string line {};
@@ -77,7 +77,7 @@ namespace sevensegment {
 	const unsigned display_size { 8 };
 
 	void printDigitSequence(const std::vector<digit_t> digits_vector,
-			std::ostream &out, const unsigned scale_factor){
+			std::ostream& out, const unsigned scale_factor){
 
 		if (scale_factor<1) throw std::range_error { "invalid scale" };
 		if (digits_vector.size() > display_size)
@@ -98,18 +98,18 @@ namespace sevensegment {
 		}
 	}
 
-	void printLargeDigit(const unsigned i, std::ostream &out, const unsigned scale_factor) {
+	void printLargeDigit(const unsigned i, std::ostream& out, const unsigned scale_factor) {
 		const auto digit = digits.at(i);
 		const std::vector< std::vector<std::string> > single_digit_vector { digit };
 		printDigitSequence(single_digit_vector, out, scale_factor);
 	}
 
-	void printLargeNumber(const int i, std::ostream &out, const unsigned scale_factor) {
+	void printLargeNumber(const int i, std::ostream& out, const unsigned scale_factor) {
 		const auto digits_vector = split_digits(i);
 		printDigitSequence(digits_vector, out, scale_factor);
 	}
 
-	void printLargeError(std::ostream &out, const unsigned scale_factor) {
+	void printLargeError(std::ostream& out, const unsigned scale_factor) {
 		printDigitSequence(error, out, scale_factor);
 	}
 }

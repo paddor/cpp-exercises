@@ -43,7 +43,7 @@ int calc(const int a, const int b, const char operator_symbol) {
 
 }
 
-int calc(std::istream &input) {
+int calc(std::istream& input) {
 	int a {0}, b {0};
 	char operator_symbol { };
 	std::string term {};

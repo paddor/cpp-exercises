@@ -99,7 +99,7 @@ namespace calc_tests {
 		}
 	}
 
-	void add_tests_to_suite(cute::suite &s) {
+	void add_tests_to_suite(cute::suite& s) {
 		s.push_back(CUTE(multiplies_positive_numbers));
 		s.push_back(CUTE(multiplies_negative_with_positive_number));
 		s.push_back(CUTE(multiplies_negative_numbers));
@@ -215,7 +215,7 @@ namespace sevensegment_tests {
 				std::overflow_error);
 	}
 
-	void add_tests_to_suite(cute::suite &s) {
+	void add_tests_to_suite(cute::suite& s) {
 		s.push_back(CUTE(prints_digit));
 		s.push_back(CUTE(prints_scaled_digit));
 		s.push_back(CUTE(throws_when_digit_out_of_range));
@@ -306,7 +306,7 @@ namespace pocketcalculator_tests {
 				output.str().find(large_2_scale2));
 	}
 
-	void add_tests_to_suite(cute::suite &s) {
+	void add_tests_to_suite(cute::suite& s) {
 		s.push_back(CUTE(gets_term_and_prints_result));
 		s.push_back(CUTE(prints_error_on_invalid_input));
 		s.push_back(CUTE(scales));
