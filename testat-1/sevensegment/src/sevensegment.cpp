@@ -7,8 +7,8 @@
 #include <stdexcept>
 
 namespace sevensegment {
-
 	using digit = std::vector<std::string>;
+
 	const std::vector<digit> digits {
 		{ " - ",
 		  "| |",
