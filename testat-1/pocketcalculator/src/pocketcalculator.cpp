@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 namespace pocketcalculator {
-	void calc(std::istream &input, std::ostream &output, const unsigned n)
+	void calc(std::istream& input, std::ostream& output, const unsigned n)
 	try {
 		const auto result = ::calc(input);
 		sevensegment::printLargeNumber(result, output, n);
@@ -15,11 +15,8 @@ namespace pocketcalculator {
 		sevensegment::printLargeError(output, n);
 	}
 
-	void start(std::istream &input, std::ostream &output, unsigned n) {
-		while (!input.eof()) {
-			output << "Please type your input term: "; // TODO: remove prompt
-			calc(input, output, n);
-		}
+	void start(std::istream& input, std::ostream& output, unsigned n) {
+		while (!input.eof()) calc(input, output, n);
 	}
 
 	unsigned preferred_scale() {
