@@ -127,15 +127,14 @@ namespace sevensegment {
 
 		std::string line {};
 		unsigned digit_nr { 0 };
-		for_each(digits_vector.begin(), digits_vector.end(),
-				[&](digit digit){
 
-			line.append(stretchDigitLine(digit[line_nr], scale_factor));
+		for(digit d : digits_vector){
+			line.append(stretchDigitLine(d[line_nr], scale_factor));
 
 			// between digits (not at the end)
 			if (++digit_nr != digits_vector.size())
 				line.append(scale_factor/2, ' '); // letter spacing for readability
-		});
+		}
 		return line;
 	}
 
