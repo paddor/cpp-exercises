@@ -8,8 +8,9 @@
 
 namespace sevensegment {
 	using digit = std::vector<std::string>;
+	using digit_vector = std::vector<digit>;
 
-	const std::vector<digit> digits {
+	const digit_vector digits {
 		{ " - ",
 		  "| |",
 		  "   ",
@@ -76,7 +77,7 @@ namespace sevensegment {
 		return stretched_line;
 	}
 
-	std::vector<digit> split_digits(const int i, std::vector<digit>& vector) {
+	digit_vector split_digits(const int i, digit_vector& vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
 
@@ -84,8 +85,8 @@ namespace sevensegment {
 	    return vector;
 	}
 
-	std::vector<digit> split_digits(int i) {
-		std::vector<digit> vector {};
+	digit_vector split_digits(int i) {
+		digit_vector vector {};
 		if (i<0) {
 			vector.push_back(minus_sign);
 			i = -i;
@@ -94,14 +95,14 @@ namespace sevensegment {
 		return split_digits(i, vector);
 	}
 
-	std::string lineOfLargeDigits(const std::vector<digit>& digits_vector,
+	std::string lineOfLargeDigits(const digit_vector& vector,
 			const unsigned line_nr, const unsigned scale_factor){
 
 		std::string line {};
 		unsigned digit_nr { 0 };
-		const auto number_of_digits = digits_vector.size();
+		const auto number_of_digits = vector.size();
 
-		for(digit d : digits_vector){
+		for(digit d : vector){
 			line.append(stretchDigitLine(d[line_nr], scale_factor));
 
 			// between digits (not at the end)
