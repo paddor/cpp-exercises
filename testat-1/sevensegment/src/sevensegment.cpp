@@ -80,7 +80,7 @@ namespace sevensegment {
 		std::ostream_iterator<std::string> out_it(out, "\n");
 
 		// iterate through lines, not digits
-		// OPTIMIZE: transpose vector first
+		// OPTIMIZE: transpose vector first to get more cache hits
 		for(int line_nr { 0 }; line_nr < 5; ++line_nr) {
 			auto count = (line_nr == 1 || line_nr == 3) ? scale_factor : 1;
 			auto line = lineOfLargeDigits(vector, line_nr, scale_factor);
