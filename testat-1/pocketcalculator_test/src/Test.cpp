@@ -10,6 +10,7 @@
 #include <string>
 #include <sstream>
 #include <limits>
+#include <algorithm>
 
 namespace calc_tests {
 	constexpr int max { std::numeric_limits<int>::max() },
@@ -238,11 +239,15 @@ namespace pocketcalculator_tests {
 		" --   -- \n"
 	};
 
+	bool includes(const std::string str, const std::string substr) {
+		return (str.find(substr) != std::string::npos);
+	}
+
 	void gets_term_and_prints_result() {
 		std::ostringstream output {};
 		std::istringstream input { "2+20" };
 		pocketcalculator::start(input, output);
-		ASSERT(output.str().find(large_output) != std::string::npos);
+		ASSERT(includes(output.str(), large_output));
 	}
 
 	const std::string error_scale2 {
@@ -261,8 +266,7 @@ namespace pocketcalculator_tests {
 			std::ostringstream output {};
 			std::istringstream input { term };
 			pocketcalculator::start(input, output);
-			ASSERT_NOT_EQUAL_TO(std::string::npos,
-					output.str().find(error_scale2));
+			ASSERT(includes(output.str(), error_scale2));
 		}
 	}
 
@@ -284,8 +288,7 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output, 4);
-		ASSERT_NOT_EQUAL_TO(std::string::npos,
-				output.str().find(large_2_scale4));
+		ASSERT(includes(output.str(), large_2_scale4));
 	}
 
 	const std::string large_2_scale2 {
@@ -302,8 +305,7 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output);
-		ASSERT_NOT_EQUAL_TO(std::string::npos,
-				output.str().find(large_2_scale2));
+		ASSERT(includes(output.str(), large_2_scale2));
 	}
 
 	void add_tests_to_suite(cute::suite& s) {
