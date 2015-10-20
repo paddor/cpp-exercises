@@ -239,6 +239,7 @@ namespace pocketcalculator_tests {
 		" --   -- \n"
 	};
 
+	// TODO: we don't have a prompt anymore. so maybe this functionality is obsolete anyway
 	bool includes(const std::string str, const std::string substr) {
 		return (str.find(substr) != std::string::npos);
 	}
