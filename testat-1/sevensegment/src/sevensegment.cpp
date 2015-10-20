@@ -82,12 +82,9 @@ namespace sevensegment {
 		// iterate through lines, not digits
 		// OPTIMIZE: transpose vector first
 		for(int line_nr { 0 }; line_nr < 5; ++line_nr) {
-			if (line_nr == 1 || line_nr == 3) {
-				const auto line = lineOfLargeDigits(vector, line_nr, scale_factor);
-				std::generate_n(out_it, scale_factor, [&](){return line;});
-			} else {
-				out << lineOfLargeDigits(vector, line_nr, scale_factor) << '\n';
-			}
+			auto count = (line_nr == 1 || line_nr == 3) ? scale_factor : 1;
+			auto line = lineOfLargeDigits(vector, line_nr, scale_factor);
+			std::fill_n(out_it, count, line);
 		}
 	}
 
