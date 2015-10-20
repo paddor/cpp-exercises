@@ -239,16 +239,11 @@ namespace pocketcalculator_tests {
 		" --   -- \n"
 	};
 
-	// TODO: we don't have a prompt anymore. so maybe this functionality is obsolete anyway
-	bool includes(const std::string str, const std::string substr) {
-		return (str.find(substr) != std::string::npos);
-	}
-
 	void gets_term_and_prints_result() {
 		std::ostringstream output {};
 		std::istringstream input { "2+20" };
 		pocketcalculator::start(input, output);
-		ASSERT(includes(output.str(), large_output));
+		ASSERT_EQUAL(large_output, output.str());
 	}
 
 	const std::string error_scale2 {
@@ -267,7 +262,7 @@ namespace pocketcalculator_tests {
 			std::ostringstream output {};
 			std::istringstream input { term };
 			pocketcalculator::start(input, output);
-			ASSERT(includes(output.str(), error_scale2));
+			ASSERT_EQUAL(error_scale2, output.str());
 		}
 	}
 
@@ -289,7 +284,7 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output, 4);
-		ASSERT(includes(output.str(), large_2_scale4));
+		ASSERT_EQUAL(large_2_scale4, output.str());
 	}
 
 	const std::string large_2_scale2 {
@@ -306,7 +301,7 @@ namespace pocketcalculator_tests {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output);
-		ASSERT(includes(output.str(), large_2_scale2));
+		ASSERT_EQUAL(large_2_scale2, output.str());
 	}
 
 	void add_tests_to_suite(cute::suite& s) {
