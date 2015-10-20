@@ -25,6 +25,12 @@ namespace calc_tests {
 		ASSERT_EQUAL(20, calc(-4, -5, '*'));
 	}
 	void recognizes_overflows_when_multiplying() {
+		ASSERT_THROWS(calc(4, max/3, '*'), std::overflow_error);
+		ASSERT_THROWS(calc(4, min/3, '*'), std::overflow_error);
+		ASSERT_THROWS(calc(-4, max/3, '*'), std::overflow_error);
+		ASSERT_THROWS(calc(-4, min/3, '*'), std::overflow_error);
+	}
+	void doesnt_overflow_near_limits() {
 		calc(1, max, '*');
 		calc(1, min, '*');
 		calc(-1, max, '*');
@@ -33,11 +39,6 @@ namespace calc_tests {
 		calc(2, min/2, '*');
 		calc(-2, max/2, '*');
 		calc(-2, min/2+1, '*');
-
-		ASSERT_THROWS(calc(4, max/3, '*'), std::overflow_error);
-		ASSERT_THROWS(calc(4, min/3, '*'), std::overflow_error);
-		ASSERT_THROWS(calc(-4, max/3, '*'), std::overflow_error);
-		ASSERT_THROWS(calc(-4, min/3, '*'), std::overflow_error);
 	}
 	void divides() {
 		ASSERT_EQUAL(5, calc(60, 12, '/'));
@@ -105,6 +106,7 @@ namespace calc_tests {
 		s.push_back(CUTE(multiplies_negative_with_positive_number));
 		s.push_back(CUTE(multiplies_negative_numbers));
 		s.push_back(CUTE(recognizes_overflows_when_multiplying));
+		s.push_back(CUTE(doesnt_overflow_near_limits));
 		s.push_back(CUTE(divides));
 		s.push_back(CUTE(throws_when_dividing_by_zero));
 		s.push_back(CUTE(adds));
