@@ -146,10 +146,10 @@ namespace sevensegment_tests {
 
 	void prints_digit() {
 		std::ostringstream output {};
-		sevensegment::printLargeDigit(8, output);
+		sevensegment::printLargeDigit(8, output, 1);
 		ASSERT_EQUAL(large_8, output.str());
 		output.str("");
-		sevensegment::printLargeDigit(1, output);
+		sevensegment::printLargeDigit(1, output, 1);
 		ASSERT_EQUAL(large_1, output.str());
 	}
 	void prints_scaled_digit() {
@@ -159,7 +159,7 @@ namespace sevensegment_tests {
 	}
 	void throws_when_digit_out_of_range() {
 		std::ostringstream output {};
-		ASSERT_THROWS(sevensegment::printLargeDigit(10,output),
+		ASSERT_THROWS(sevensegment::printLargeDigit(10,output, 1),
 				std::out_of_range);
 	}
 	void throws_when_scale_out_of_range() {
@@ -186,13 +186,13 @@ namespace sevensegment_tests {
 
 	void prints_number() {
 		std::ostringstream output {};
-		sevensegment::printLargeNumber(54321, output);
+		sevensegment::printLargeNumber(54321, output, 1);
 		ASSERT_EQUAL(large_number, output.str());
 	}
 
 	void prints_negative_number() {
 		std::ostringstream output {};
-		sevensegment::printLargeNumber(-33, output);
+		sevensegment::printLargeNumber(-33, output, 1);
 		ASSERT_EQUAL(large_negative_number, output.str());
 	}
 
@@ -206,7 +206,7 @@ namespace sevensegment_tests {
 
 	void prints_error() {
 		std::ostringstream output {};
-		sevensegment::printLargeError(output);
+		sevensegment::printLargeError(output, 1);
 		ASSERT_EQUAL(large_error, output.str());
 	}
 
@@ -229,40 +229,28 @@ namespace sevensegment_tests {
 }
 
 namespace pocketcalculator_tests {
-	const std::string large_output {
-		" --   -- \n"
-		"   |    |\n"
-		"   |    |\n"
-		" --   -- \n"
-		"|    |   \n"
-		"|    |   \n"
-		" --   -- \n"
+	const std::string large_22 {
+		" -  - \n"
+		"  |  |\n"
+		" -  - \n"
+		"|  |  \n"
+		" -  - \n"
 	};
 
 	void gets_term_and_prints_result() {
 		std::ostringstream output {};
 		std::istringstream input { "2+20" };
-		pocketcalculator::start(input, output);
-		ASSERT_EQUAL(large_output, output.str());
+		pocketcalculator::start(input, output, 1);
+		ASSERT_EQUAL(large_22, output.str());
 	}
-
-	const std::string error_scale2 {
-		" --                     \n"
-		"|                       \n"
-		"|                       \n"
-		" --   --   --   --   -- \n"
-		"|    |    |    |  | |   \n"
-		"|    |    |    |  | |   \n"
-		" --             --      \n"
-	};
 
 	void prints_error_on_invalid_input() {
 		for(auto const term : calc_tests::invalid_terms) {
 
 			std::ostringstream output {};
 			std::istringstream input { term };
-			pocketcalculator::start(input, output);
-			ASSERT_EQUAL(error_scale2, output.str());
+			pocketcalculator::start(input, output, 1);
+			ASSERT_EQUAL(sevensegment_tests::large_error, output.str());
 		}
 	}
 
@@ -287,21 +275,19 @@ namespace pocketcalculator_tests {
 		ASSERT_EQUAL(large_2_scale4, output.str());
 	}
 
-	const std::string large_2_scale2 {
-		" -- \n"
-		"   |\n"
-		"   |\n"
-		" -- \n"
-		"|   \n"
-		"|   \n"
-		" -- \n"
+	const std::string large_2 {
+		" - \n"
+		"  |\n"
+		" - \n"
+		"|  \n"
+		" - \n"
 	};
 
 	void uses_default_scale_when_scale_omitted() {
 		std::ostringstream output {};
 		std::istringstream input {"1+1"};
 		pocketcalculator::start(input, output);
-		ASSERT_EQUAL(large_2_scale2, output.str());
+		ASSERT_EQUAL(large_2, output.str());
 	}
 
 	void add_tests_to_suite(cute::suite& s) {
