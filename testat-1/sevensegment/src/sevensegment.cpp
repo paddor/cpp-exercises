@@ -26,9 +26,9 @@ namespace sevensegment {
 		{ "   ", "   ", " - ", "   ", "   " }; // -
 
 	std::string stretchDigitLine(const std::string& line, const unsigned scale_factor) {
-		std::string stretched_line(scale_factor+2, line[1]);
-		stretched_line.front() = line[0];
-		stretched_line.back() = line[2];
+		std::string stretched_line(scale_factor+2, line[1]); // stretch the center
+		stretched_line.front() = line[0]; // fix first char
+		stretched_line.back() = line[2]; // fix last char
 		return stretched_line;
 	}
 
