@@ -20,9 +20,10 @@ namespace pocketcalculator {
 	}
 
 	unsigned preferred_scale() {
-		const char* scale_ptr = getenv("POCKETCALCULATOR_SCALE");
-		if (scale_ptr != nullptr)
-			return std::stoul(std::string { scale_ptr });
+		const std::unique_ptr<char> scale_ptr { getenv("POCKETCALCULATOR_SCALE") };
+		if (scale_ptr)
+			return std::stoul(std::string { *scale_ptr });
+		// TODO: test with and without env var set
 
 		return 0;
 	}
