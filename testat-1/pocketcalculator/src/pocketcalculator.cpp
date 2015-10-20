@@ -7,16 +7,16 @@
 #include <stdlib.h>
 
 namespace pocketcalculator {
-	void calc(std::istream& input, std::ostream& output, const unsigned n)
+	void calc(std::istream& input, std::ostream& output, const unsigned scale_factor)
 	try {
 		const auto result = ::calc(input);
-		sevensegment::printLargeNumber(result, output, n);
+		sevensegment::printLargeNumber(result, output, scale_factor);
 	} catch(std::exception&) {
-		sevensegment::printLargeError(output, n);
+		sevensegment::printLargeError(output, scale_factor);
 	}
 
-	void start(std::istream& input, std::ostream& output, unsigned n) {
-		while (!input.eof()) calc(input, output, n);
+	void start(std::istream& input, std::ostream& output, unsigned scale_factor) {
+		while (!input.eof()) calc(input, output, scale_factor);
 	}
 
 	unsigned preferred_scale() {
