@@ -1,6 +1,5 @@
 #include "pocketcalculator.h"
 #include <iostream>
-#include <string>
 
 int main(){
 	using namespace pocketcalculator;
