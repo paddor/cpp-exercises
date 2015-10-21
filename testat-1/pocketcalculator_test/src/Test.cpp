@@ -176,7 +176,7 @@ namespace sevensegment_tests {
 				std::range_error);
 	}
 
-	const std::string large_number {
+	const std::string large_54321 {
 		" -     -  -    \n"
 		"|  | |  |  |  |\n"
 		" -  -  -  -    \n"
@@ -184,7 +184,7 @@ namespace sevensegment_tests {
 		" -     -  -    \n"
 	};
 
-	const std::string large_negative_number {
+	const std::string large_negative_33 {
 	"    -  - \n"
 	"     |  |\n"
 	" -  -  - \n"
@@ -195,13 +195,13 @@ namespace sevensegment_tests {
 	void prints_number() {
 		std::ostringstream output { };
 		sevensegment::printLargeNumber(54321, output, 1);
-		ASSERT_EQUAL(large_number, output.str());
+		ASSERT_EQUAL(large_54321, output.str());
 	}
 
 	void prints_negative_number() {
 		std::ostringstream output { };
 		sevensegment::printLargeNumber(-33, output, 1);
-		ASSERT_EQUAL(large_negative_number, output.str());
+		ASSERT_EQUAL(large_negative_33, output.str());
 	}
 
 	const std::string large_error {
