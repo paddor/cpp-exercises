@@ -53,17 +53,18 @@ namespace sevensegment {
 	std::string lineOfLargeDigits(const digit_vector& vector,
 			const unsigned line_nr, const unsigned scale_factor){
 
+		const std::string letter_space(scale_factor/2, ' ');
 		std::string line {};
-		unsigned digit_nr { 0 };
-		const auto number_of_digits = vector.size();
+		bool first_digit = true;
 
-		for(digit d : vector){
-			line.append(stretchDigitLine(d[line_nr], scale_factor));
-
-			// between digits (not at the end)
-			if (++digit_nr != number_of_digits)
-				line.append(scale_factor/2, ' '); // letter spacing for readability
+		// NOTE: It would be really nice to have an infix_iterator.
+		// http://stackoverflow.com/questions/3496982/printing-lists-with-commas-c/3497021#3497021
+		for(digit d : vector) {
+			if (!first_digit) line += letter_space;
+			line += stretchDigitLine(d[line_nr], scale_factor);
+			first_digit = false;
 		}
+
 		return line;
 	}
 
