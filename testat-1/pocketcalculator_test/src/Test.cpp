@@ -271,8 +271,8 @@ namespace pocketcalculator_tests {
 	};
 
 	void scales() {
-		std::ostringstream output {};
-		std::istringstream input {"1+1"};
+		std::ostringstream output { };
+		std::istringstream input { "1+1" };
 		pocketcalculator::start(input, output, 4);
 		ASSERT_EQUAL(large_2_scale4, output.str());
 	}
