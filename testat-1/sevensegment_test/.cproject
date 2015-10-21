@@ -32,7 +32,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/Debug}&quot;"/>
 								</option>
 								<option id="macosx.cpp.link.option.libs.1812716947" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="sevensegment"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sevensegment"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.548323813" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -41,8 +41,8 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug.569779056" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug">
 								<option id="gnu.both.asm.option.include.paths.1097127548" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment_test/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment_test/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/src}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.300658611" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
@@ -52,6 +52,7 @@
 								<option id="gnu.cpp.compilermacosx.exe.debug.option.optimization.level.911952807" name="Optimization Level" superClass="gnu.cpp.compilermacosx.exe.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level.2023266566" name="Debug Level" superClass="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.209744464" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment_test/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/src}&quot;"/>
 								</option>
@@ -62,6 +63,7 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.macosx.exe.debug.option.optimization.level.175950644" name="Optimization Level" superClass="gnu.c.compiler.macosx.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.macosx.exe.debug.option.debugging.level.1742731806" name="Debug Level" superClass="gnu.c.compiler.macosx.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.63066567" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment_test/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/src}&quot;"/>
 								</option>

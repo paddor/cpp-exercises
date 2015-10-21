@@ -26,9 +26,9 @@
 							<targetPlatform id="cdt.managedbuild.target.gnu.platform.macosx.exe.debug.1757633758" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.macosx.exe.debug"/>
 							<builder buildPath="${workspace_loc:/pocketcalculator}/Debug" enabledIncrementalBuild="true" id="cdt.managedbuild.target.gnu.builder.macosx.exe.debug.235453361" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.macosx.exe.debug"/>
 							<tool id="cdt.managedbuild.tool.macosx.c.linker.macosx.exe.debug.1649456686" name="MacOS X C Linker" superClass="cdt.managedbuild.tool.macosx.c.linker.macosx.exe.debug">
-								<option defaultValue="true" id="macosx.c.link.option.nostart.556216294" superClass="macosx.c.link.option.nostart" valueType="boolean"/>
-								<option defaultValue="true" id="macosx.c.link.option.nodeflibs.386007313" superClass="macosx.c.link.option.nodeflibs" valueType="boolean"/>
-								<option defaultValue="true" id="macosx.c.link.option.shared.325842139" superClass="macosx.c.link.option.shared" valueType="boolean"/>
+								<option defaultValue="true" id="macosx.c.link.option.nostart.556216294" name="Do not use standard start files (-nostartfiles)" superClass="macosx.c.link.option.nostart" valueType="boolean"/>
+								<option defaultValue="true" id="macosx.c.link.option.nodeflibs.386007313" name="Do not use default libraries (-nodefaultlibs)" superClass="macosx.c.link.option.nodeflibs" valueType="boolean"/>
+								<option defaultValue="true" id="macosx.c.link.option.shared.325842139" name="Shared (-dynamiclib)" superClass="macosx.c.link.option.shared" valueType="boolean"/>
 							</tool>
 							<tool command="g++" id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug.2061544287" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug">
 								<option id="macosx.cpp.link.option.paths.1114302111" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
@@ -39,7 +39,7 @@
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sevensegment"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="calc"/>
 								</option>
-								<option defaultValue="true" id="macosx.cpp.link.option.shared.2008709500" superClass="macosx.cpp.link.option.shared" valueType="boolean"/>
+								<option defaultValue="true" id="macosx.cpp.link.option.shared.2008709500" name="Shared (-dynamiclib)" superClass="macosx.cpp.link.option.shared" valueType="boolean"/>
 								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.393713259" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -58,6 +58,8 @@
 								<option id="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level.430055674" name="Debug Level" superClass="gnu.cpp.compiler.macosx.exe.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.dialect.std.620276285" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" value="gnu.cpp.compiler.dialect.c++11" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.554418148" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc/src}&quot;"/>
 								</option>

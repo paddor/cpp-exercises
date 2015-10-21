@@ -35,17 +35,14 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug.422338310" name="MacOS X C++ Linker" superClass="cdt.managedbuild.tool.macosx.cpp.linker.macosx.exe.debug">
 								<option id="macosx.cpp.link.option.paths.1729164678" name="Library search path (-L)" superClass="macosx.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/libcalc/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc/Release}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/Debug}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/Release}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc/Debug}&quot;"/>
 								</option>
 								<option id="macosx.cpp.link.option.libs.432333477" name="Libraries (-l)" superClass="macosx.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="calc"/>
-									<listOptionValue builtIn="false" value="pocketcalculator"/>
-									<listOptionValue builtIn="false" value="sevensegment"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="sevensegment"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="pocketcalculator"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="calc"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.macosx.cpp.linker.input.1286469767" superClass="cdt.managedbuild.tool.macosx.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -54,11 +51,8 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug.1652083368" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.macosx.exe.debug">
 								<option id="gnu.both.asm.option.include.paths.249182010" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator_test/cute}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/src}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.592634105" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
@@ -80,11 +74,9 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.macosx.exe.debug.option.optimization.level.1745198784" name="Optimization Level" superClass="gnu.c.compiler.macosx.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.macosx.exe.debug.option.debugging.level.1501235491" name="Debug Level" superClass="gnu.c.compiler.macosx.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.933644109" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/calc/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator_test/cute}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/pocketcalculator/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/sevensegment/src}&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1001852362" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
@@ -134,5 +126,9 @@
 		</scannerConfigBuildInfo>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/pocketcalculator_test"/>
+		</configuration>
+	</storageModule>
 </cproject>
