@@ -97,7 +97,7 @@ namespace calc_tests {
     void throws_when_given_invalid_term() {
 		for(auto const term : invalid_terms) {
 			std::istringstream term_stream { term };
-			ASSERT_THROWS(calc(term_stream), std::exception); // TODO: more specific?
+			ASSERT_THROWS(calc(term_stream), std::exception);
 		}
 	}
 
