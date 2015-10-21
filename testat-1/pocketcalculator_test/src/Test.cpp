@@ -300,6 +300,7 @@ namespace pocketcalculator_tests {
 	}
 
 	// TODO: add env scale test
+	// TODO: test with and without env var set
 }
 
 void runAllTests(int argc, char const *argv[]){

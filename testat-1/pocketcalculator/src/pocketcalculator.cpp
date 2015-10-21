@@ -26,7 +26,6 @@ namespace pocketcalculator {
 
 		if (scale_ptr != nullptr)
 			return std::stoul(std::string { scale_ptr });
-		// TODO: test with and without env var set
 
 		return 0;
 	}
