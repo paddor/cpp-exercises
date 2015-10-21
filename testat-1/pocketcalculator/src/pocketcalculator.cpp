@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace pocketcalculator {
 	void calc(std::istream& input, std::ostream& output, const unsigned scale_factor)
@@ -22,7 +22,8 @@ namespace pocketcalculator {
 	unsigned preferred_scale() {
 		// NOTE: can't use std::unique_ptr because the memory pointed to by the
 		// pointer is not ours
-		const char* scale_ptr { getenv("POCKETCALCULATOR_SCALE") };
+		const char* scale_ptr { std::getenv("POCKETCALCULATOR_SCALE") };
+
 		if (scale_ptr != nullptr)
 			return std::stoul(std::string { scale_ptr });
 		// TODO: test with and without env var set
