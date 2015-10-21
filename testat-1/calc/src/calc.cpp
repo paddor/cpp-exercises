@@ -19,12 +19,13 @@ int calc(const int a, const int b, const char operator_symbol) {
 	switch (operator_symbol) {
 		case '*': {
 			int result { a * b };
-			throw_overflow_if((sign(a) * sign(b) != sign(result)) || (a != 0 && result / a != b));
+			throw_overflow_if( (sign(a) * sign(b) != sign(result))
+					|| (a != 0 && result / a != b));
 			return result;
 		}
 		case '/':
 		case '%':
-			if (b == 0) throw std::domain_error{"division by zero"};
+			if (b == 0) throw std::domain_error { "division by zero" };
 			if (operator_symbol == '/') return a / b;
 			else return a % b;
 		case '+':
@@ -37,20 +38,20 @@ int calc(const int a, const int b, const char operator_symbol) {
 			return a - b;
 		default:
 			std::string reason { "invalid operator: " };
-			reason.push_back(operator_symbol);
-			throw std::runtime_error{reason};
+			reason += operator_symbol;
+			throw std::runtime_error { reason };
 	}
 
 }
 
 int calc(std::istream& input) {
-	int a {0}, b {0};
+	int a { 0 }, b { 0 };
 	char operator_symbol { };
-	std::string term {};
+	std::string term { };
 	std::getline(input, term);
 	std::istringstream term_input { term };
 	term_input >> a >> operator_symbol >> b;
-	if (term_input.fail() || !term_input.eof())
+	if (!term_input || !term_input.eof())
 			throw std::runtime_error{ "malformed input term"};
 	return calc(a, b, operator_symbol);
 }
