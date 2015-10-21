@@ -1,6 +1,5 @@
 #ifndef SEVENSEGMENT_H_
 #define SEVENSEGMENT_H_
-
 #include <iosfwd>
 
 namespace sevensegment {
