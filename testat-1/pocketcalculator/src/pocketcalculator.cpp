@@ -15,11 +15,7 @@ namespace pocketcalculator {
 		sevensegment::printLargeError(output, scale_factor);
 	}
 
-	void start(std::istream& input, std::ostream& output, unsigned scale_factor) {
-		while (!input.eof()) calc(input, output, scale_factor);
-	}
-
-	unsigned preferred_scale() {
+	unsigned automatic_scale() {
 		// NOTE: can't use std::unique_ptr because the memory pointed to by the
 		// pointer is not ours
 		const char* scale_ptr { std::getenv("POCKETCALCULATOR_SCALE") };
@@ -27,6 +23,13 @@ namespace pocketcalculator {
 		if (scale_ptr != nullptr)
 			return std::stoul(std::string { scale_ptr });
 
-		return 0;
+		return default_scale_factor;
+	}
+
+	void start(std::istream& input, std::ostream& output, unsigned scale_factor) {
+		if (scale_factor == 0)
+			scale_factor = automatic_scale();
+
+		while (!input.eof()) calc(input, output, scale_factor);
 	}
 }

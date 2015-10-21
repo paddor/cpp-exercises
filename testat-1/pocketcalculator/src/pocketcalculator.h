@@ -3,8 +3,9 @@
 #include <iosfwd>
 
 namespace pocketcalculator {
-	void start(std::istream& input, std::ostream& output, const unsigned scale_factor = 1);
-	unsigned preferred_scale();
+	const int default_scale_factor = 1;
+	void start(std::istream& input, std::ostream& output,
+			const unsigned scale_factor = default_scale_factor);
 }
 
 
