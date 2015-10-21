@@ -30,7 +30,7 @@ namespace calc_tests {
 		ASSERT_THROWS(calc(-4, max/3, '*'), std::overflow_error);
 		ASSERT_THROWS(calc(-4, min/3, '*'), std::overflow_error);
 	}
-	void doesnt_overflow_near_limits() {
+	void doesnt_overflow_near_limits_when_multiplying() {
 		calc(1, max, '*');
 		calc(1, min, '*');
 		calc(-1, max, '*');
@@ -52,20 +52,24 @@ namespace calc_tests {
 		ASSERT_EQUAL(-10, calc(-6, -4, '+'));
 	}
 	void recognizes_overflows_when_adding() {
-		calc(max, 0, '+'); // must not throw
 		ASSERT_THROWS(calc(max, 1, '+'), std::overflow_error);
-		calc(min, 0, '+'); // must not throw
 		ASSERT_THROWS(calc(min, -1, '+'), std::overflow_error);
+	}
+	void doesnt_overflow_near_limits_when_adding() {
+		calc(max, 0, '+');
+		calc(min, 0, '+');
 	}
 	void subtracts() {
 		ASSERT_EQUAL(17, calc(20, 3, '-'));
 		ASSERT_EQUAL(-5, calc(-2, 3, '-'));
 	}
 	void recognizes_overflows_when_subtracting() {
-		calc(max, 0, '-'); // must not throw
 		ASSERT_THROWS(calc(max, -1, '-'), std::overflow_error);
-		calc(min, 0, '-'); // must not throw
 		ASSERT_THROWS(calc(min, 1, '-'), std::overflow_error);
+	}
+	void doesnt_overflow_near_limits_when_subtracting() {
+		calc(max, 0, '-');
+		calc(min, 0, '-');
 	}
 	void knows_modulo() {
 		ASSERT_EQUAL(5, calc(15, 10, '%'));
@@ -106,13 +110,15 @@ namespace calc_tests {
 		s.push_back(CUTE(multiplies_negative_with_positive_number));
 		s.push_back(CUTE(multiplies_negative_numbers));
 		s.push_back(CUTE(recognizes_overflows_when_multiplying));
-		s.push_back(CUTE(doesnt_overflow_near_limits));
+		s.push_back(CUTE(doesnt_overflow_near_limits_when_multiplying));
 		s.push_back(CUTE(divides));
 		s.push_back(CUTE(throws_when_dividing_by_zero));
 		s.push_back(CUTE(adds));
 		s.push_back(CUTE(recognizes_overflows_when_adding));
+		s.push_back(CUTE(doesnt_overflow_near_limits_when_adding));
 		s.push_back(CUTE(subtracts));
 		s.push_back(CUTE(recognizes_overflows_when_subtracting));
+		s.push_back(CUTE(doesnt_overflow_near_limits_when_subtracting));
 		s.push_back(CUTE(throws_when_given_invalid_operator));
 		s.push_back(CUTE(knows_modulo));
 		s.push_back(CUTE(throws_when_modulo_zero));
