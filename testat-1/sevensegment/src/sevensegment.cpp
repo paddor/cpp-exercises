@@ -10,7 +10,7 @@ namespace sevensegment {
 	using digit = std::vector<std::string>;
 	using digit_vector = std::vector<digit>;
 
-	const digit_vector digits {
+	digit_vector const digits {
 		{ " - ", "| |", "   ", "| |", " - " }, // 0
 		{ "   ", "  |", "   ", "  |", "   " }, // 1
 		{ " - ", "  |", " - ", "|  ", " - " }, // 2
@@ -22,17 +22,17 @@ namespace sevensegment {
 		{ " - ", "| |", " - ", "| |", " - " }, // 8
 		{ " - ", "| |", " - ", "  |", " - " }  // 9
 	};
-	const digit minus_sign
+	digit const minus_sign
 		{ "   ", "   ", " - ", "   ", "   " }; // -
 
-	std::string stretchDigitLine(const std::string& line, const unsigned scale_factor) {
+	std::string stretchDigitLine(std::string const& line, unsigned const scale_factor) {
 		std::string stretched_line(scale_factor+2, line[1]); // stretch the center
 		stretched_line.front() = line[0]; // fix first char
 		stretched_line.back() = line[2]; // fix last char
 		return stretched_line;
 	}
 
-	digit_vector split_digits(const int i, digit_vector& vector) {
+	digit_vector split_digits(int const i, digit_vector& vector) {
 	    if(i >= 10)
 	       split_digits(i / 10, vector);
 
@@ -50,10 +50,10 @@ namespace sevensegment {
 		return split_digits(i, vector);
 	}
 
-	std::string lineOfLargeDigits(const digit_vector& vector,
-			const unsigned line_nr, const unsigned scale_factor){
+	std::string lineOfLargeDigits(digit_vector const& vector,
+			unsigned const line_nr, unsigned const scale_factor){
 
-		const std::string letter_space(scale_factor/2, ' ');
+		std::string const letter_space(scale_factor/2, ' ');
 		std::string line {};
 		bool first_digit = true;
 
@@ -68,11 +68,11 @@ namespace sevensegment {
 		return line;
 	}
 
-	constexpr unsigned display_size { 8 };
+	unsigned const display_size { 8 };
 	std::vector<int> const line_numbers { 0, 1, 2, 3, 4 };
 
-	void printDigitSequence(const digit_vector vector,
-			std::ostream& out, const unsigned scale_factor){
+	void printDigitSequence(digit_vector const vector,
+			std::ostream& out, unsigned const scale_factor){
 
 		if (scale_factor<1)
 			throw std::range_error { "invalid scale" };
@@ -91,17 +91,17 @@ namespace sevensegment {
 	}
 
 	// Requested for the assignment. Used nowhere but in the tests.
-	void printLargeDigit(const unsigned i, std::ostream& out, const unsigned scale_factor) {
-		const auto d = digits.at(i);
-		const digit_vector single_digit_vector { d };
+	void printLargeDigit(unsigned const i, std::ostream& out, unsigned const scale_factor) {
+		auto const d = digits.at(i);
+		digit_vector const single_digit_vector { d };
 		printDigitSequence(single_digit_vector, out, scale_factor);
 	}
 
-	void printLargeNumber(const int i, std::ostream& out, const unsigned scale_factor) {
+	void printLargeNumber(int const i, std::ostream& out, unsigned const scale_factor) {
 		printDigitSequence(split_digits(i), out, scale_factor);
 	}
 
-	const digit_vector error {
+	digit_vector const error {
 		{ " - ", "|  ", " - ", "|  ", " - " }, // E
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
@@ -109,7 +109,7 @@ namespace sevensegment {
 		{ "   ", "   ", " - ", "|  ", "   " }, // r
 	};
 
-	void printLargeError(std::ostream& out, const unsigned scale_factor) {
+	void printLargeError(std::ostream& out, unsigned const scale_factor) {
 		printDigitSequence(error, out, scale_factor);
 	}
 }

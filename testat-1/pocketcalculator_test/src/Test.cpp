@@ -13,7 +13,7 @@
 #include <algorithm>
 
 namespace calc_tests {
-	constexpr int max { std::numeric_limits<int>::max() },
+	int constexpr max { std::numeric_limits<int>::max() },
 				  min { std::numeric_limits<int>::min() };
 	void multiplies_positive_numbers() {
 		ASSERT_EQUAL(20, calc(4, 5, '*'));
@@ -88,7 +88,7 @@ namespace calc_tests {
 		ASSERT_EQUAL(2, result);
 	}
 
-	const std::vector<std::string> invalid_terms {
+	std::vector<std::string> const invalid_terms {
         "foobar",
         "3+2-",
         "1",
@@ -128,21 +128,21 @@ namespace calc_tests {
 }
 
 namespace sevensegment_tests {
-	const std::string large_8 {
+	std::string const large_8 {
 		" - \n"
 		"| |\n"
 		" - \n"
 		"| |\n"
 		" - \n"
 	};
-	const std::string large_1 {
+	std::string const large_1 {
 		"   \n"
 		"  |\n"
 		"   \n"
 		"  |\n"
 		"   \n"
 	};
-	const std::string large_3_scale2 {
+	std::string const large_3_scale2 {
 		" -- \n"
 		"   |\n"
 		"   |\n"
@@ -176,7 +176,7 @@ namespace sevensegment_tests {
 				std::range_error);
 	}
 
-	const std::string large_54321 {
+	std::string const large_54321 {
 		" -     -  -    \n"
 		"|  | |  |  |  |\n"
 		" -  -  -  -    \n"
@@ -184,7 +184,7 @@ namespace sevensegment_tests {
 		" -     -  -    \n"
 	};
 
-	const std::string large_negative_33 {
+	std::string const large_negative_33 {
 	"    -  - \n"
 	"     |  |\n"
 	" -  -  - \n"
@@ -204,7 +204,7 @@ namespace sevensegment_tests {
 		ASSERT_EQUAL(large_negative_33, output.str());
 	}
 
-	const std::string large_error {
+	std::string const large_error {
 		" -             \n"
 		"|              \n"
 		" -  -  -  -  - \n"
@@ -237,7 +237,7 @@ namespace sevensegment_tests {
 }
 
 namespace pocketcalculator_tests {
-	const std::string large_22 {
+	std::string const large_22 {
 		" -  - \n"
 		"  |  |\n"
 		" -  - \n"
@@ -262,7 +262,7 @@ namespace pocketcalculator_tests {
 		}
 	}
 
-	const std::string large_2_scale4 {
+	std::string const large_2_scale4 {
 		" ---- \n"
 		"     |\n"
 		"     |\n"
@@ -283,7 +283,7 @@ namespace pocketcalculator_tests {
 		ASSERT_EQUAL(large_2_scale4, output.str());
 	}
 
-	const std::string large_2 {
+	std::string const large_2 {
 		" - \n"
 		"  |\n"
 		" - \n"

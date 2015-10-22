@@ -4,16 +4,16 @@
 #include <istream>
 #include <limits>
 
-int sign(const int i) {
+int sign(int const i) {
 	return (int(0) < i) - (i < int(0));
 }
 
-void throw_overflow_if(const bool condition) {
+void throw_overflow_if(bool const condition) {
 	if (condition) throw std::overflow_error { "overflow" };
 }
 
 // Calculates the result of two numbers a and b and basic math operator.
-int calc(const int a, const int b, const char operator_symbol) {
+int calc(int const a, int const b, char const operator_symbol) {
 	using limits = std::numeric_limits<int>;
 
 	switch (operator_symbol) {
