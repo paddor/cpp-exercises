@@ -75,7 +75,7 @@ namespace sevensegment {
 			std::ostream& out, unsigned const scale_factor){
 
 		if (scale_factor<1)
-			throw std::range_error { "invalid scale" };
+			throw std::out_of_range { "invalid scale" };
 		if (vector.size() > display_size)
 			throw std::overflow_error { "too many digits" };
 

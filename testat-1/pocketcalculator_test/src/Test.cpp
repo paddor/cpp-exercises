@@ -76,12 +76,11 @@ namespace calc_tests {
 		ASSERT_EQUAL(-5, calc(-15, 10, '%'));
 	}
 	void throws_when_modulo_zero() {
-		ASSERT_THROWS(calc(10, 0, '%'), std::domain_error);
+		ASSERT_THROWS(calc(10, 0, '%'), std::logic_error);
 	}
 	void throws_when_given_invalid_operator() {
-		ASSERT_THROWS(calc(1, 1, '^'), std::runtime_error);
+		ASSERT_THROWS(calc(1, 1, '^'), std::logic_error);
 	}
-
 	void takes_term_from_istream() {
 		std::istringstream term_stream { "1+1" };
 		int result = calc(term_stream);
@@ -101,7 +100,7 @@ namespace calc_tests {
     void throws_when_given_invalid_term() {
 		for(auto const term : invalid_terms) {
 			std::istringstream term_stream { term };
-			ASSERT_THROWS(calc(term_stream), std::exception);
+			ASSERT_THROWS(calc(term_stream), std::runtime_error);
 		}
 	}
 
@@ -173,7 +172,7 @@ namespace sevensegment_tests {
 	void throws_when_scale_out_of_range() {
 		std::ostringstream output { };
 		ASSERT_THROWS(sevensegment::printLargeDigit(5,output, 0),
-				std::range_error);
+				std::out_of_range);
 	}
 
 	std::string const large_54321 {

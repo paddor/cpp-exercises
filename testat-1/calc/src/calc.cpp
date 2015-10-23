@@ -39,7 +39,7 @@ int calc(int const a, int const b, char const operator_symbol) {
 		default:
 			std::string reason { "invalid operator: " };
 			reason += operator_symbol;
-			throw std::runtime_error { reason };
+			throw std::invalid_argument { reason };
 	}
 
 }
