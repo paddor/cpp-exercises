@@ -30,6 +30,7 @@ namespace pocketcalculator {
 		if (scale_factor == 0)
 			scale_factor = automatic_scale();
 
-		while (!input.eof()) calc(input, output, scale_factor);
+		while (!input.eof())
+			calc(input, output, scale_factor);
 	}
 }
