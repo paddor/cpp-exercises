@@ -51,7 +51,17 @@ int calc(std::istream& input) {
 	std::getline(input, term);
 	std::istringstream term_input { term };
 	term_input >> a >> operator_symbol >> b;
+
 	if (!term_input || !term_input.eof())
 			throw std::runtime_error{ "malformed input term"};
-	return calc(a, b, operator_symbol);
+
+	try {
+		return calc(a, b, operator_symbol);
+
+	} catch (std::logic_error const& exception) {
+		// Translate exception from lower layer for upper layer.
+		// What was a std::logic_error from calc(int, int, char)'s
+		// point of view, is a std::runtime_error from here upwards.
+		throw std::runtime_error { exception.what() };
+	}
 }
