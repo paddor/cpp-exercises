@@ -304,8 +304,20 @@ namespace pocketcalculator_tests {
 		s.push_back(CUTE(uses_default_scale_when_scale_omitted));
 	}
 
-	// TODO: add env scale test
-	// TODO: test with and without env var set
+	// NOTE: scale_factor from environment variable POCKETCALCULATOR_SCALE
+	// would be nice, but impossible because there's no (standardized) way
+	// to change the environment of a running process. But the function
+	// used to do that does nothing else, so it's nicely decoupled. One
+	// could use a 3-argument main(), where the 3rd argument is a
+	// 2-dimensional char array containing the environment and pass that to
+	// the function getting the preferred scale factor, and then plug
+	// different 2-dimensional char arrays into that function for testing,
+	// but unfortunately the 3-argument main() is not portable.
+
+	// What would have been tested:
+	// * different values via that env var
+	// * env var not set
+	// * automatic scaling (scale_factor == 0)
 }
 
 void runAllTests(int argc, char const *argv[]){

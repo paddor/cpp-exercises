@@ -15,6 +15,12 @@ namespace pocketcalculator {
 		sevensegment::printLargeError(output, scale_factor);
 	}
 
+	// This function reads and returns the scale factor from the
+	// environment variable POCKETCALCULATOR_SCALE. If it's not set, it
+	// returns default_scale_factor.
+	//
+	// NOTE: Hard to test because there's no (standard) way to set
+	// environment variables from inside a program.
 	unsigned automatic_scale() {
 		// NOTE: can't use std::unique_ptr because the memory pointed to by the
 		// pointer is not ours
@@ -26,6 +32,8 @@ namespace pocketcalculator {
 		return default_scale_factor;
 	}
 
+	// Automatic scaling is used when scale_factor == 0. Otherwise the
+	// scale_factor won't be changed.
 	void start(std::istream& input, std::ostream& output, unsigned scale_factor) {
 		if (scale_factor == 0)
 			scale_factor = automatic_scale();
