@@ -92,7 +92,7 @@ namespace sevensegment {
 
 	// Requested for the assignment. Used nowhere but in the tests.
 	void printLargeDigit(unsigned const i, std::ostream& out, unsigned const scale_factor) {
-		auto const d = digits.at(i);
+		auto const d = digits.at(i); // NOTE: will throw std::out_of_range if i not within 0..9
 		digit_vector const single_digit_vector { d };
 		printDigitSequence(single_digit_vector, out, scale_factor);
 	}
