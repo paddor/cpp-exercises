@@ -83,7 +83,9 @@ namespace sevensegment {
 
 		// iterate through lines, not digits
 		// OPTIMIZE: transpose vector first to get more cache hits
-		for_each(begin(line_numbers), end(line_numbers), [&](int line_nr) {
+		for_each(begin(line_numbers), end(line_numbers),
+				[scale_factor,&vector,&out_it](int line_nr) {
+
 			auto count = (line_nr == 1 || line_nr == 3) ? scale_factor : 1;
 			auto line = lineOfLargeDigits(vector, line_nr, scale_factor);
 			std::fill_n(out_it, count, line);
