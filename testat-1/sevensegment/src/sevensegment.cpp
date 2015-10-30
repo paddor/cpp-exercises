@@ -71,7 +71,7 @@ namespace sevensegment {
 	unsigned const display_size { 8 };
 	std::vector<int> const line_numbers { 0, 1, 2, 3, 4 };
 
-	void printDigitSequence(digit_vector const vector,
+	void printDigitSequence(digit_vector const& vector,
 			std::ostream& out, unsigned const scale_factor){
 
 		if (scale_factor<1)
