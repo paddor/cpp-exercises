@@ -17,9 +17,11 @@ namespace calc_tests {
 				  min { std::numeric_limits<int>::min() };
 	void multiplies_positive_numbers() {
 		ASSERT_EQUAL(20, calc(4, 5, '*'));
+		ASSERT_EQUAL(42, calc(42, 1, '*'));
 	}
 	void multiplies_negative_with_positive_number() {
 		ASSERT_EQUAL(-30, calc(-6, 5, '*'));
+		ASSERT_EQUAL(-42, calc(42, -1, '*'));
 	}
 	void multiplies_negative_numbers() {
 		ASSERT_EQUAL(20, calc(-4, -5, '*'));
@@ -43,6 +45,8 @@ namespace calc_tests {
 	void divides() {
 		ASSERT_EQUAL(5, calc(60, 12, '/'));
 		ASSERT_EQUAL(-3, calc(9, -3, '/'));
+		ASSERT_EQUAL(42, calc(42, 1, '/'));
+		ASSERT_EQUAL(-42, calc(42, -1, '/'));
 	}
 	void throws_when_dividing_by_zero() {
 		ASSERT_THROWS(calc(1, 0, '/'), std::domain_error);
@@ -50,6 +54,7 @@ namespace calc_tests {
 	void adds() {
 		ASSERT_EQUAL(5, calc(2, 3, '+'));
 		ASSERT_EQUAL(-10, calc(-6, -4, '+'));
+		ASSERT_EQUAL(1, calc(1, 0, '+'));
 	}
 	void recognizes_overflows_when_adding() {
 		ASSERT_THROWS(calc(max, 1, '+'), std::overflow_error);
@@ -62,6 +67,7 @@ namespace calc_tests {
 	void subtracts() {
 		ASSERT_EQUAL(17, calc(20, 3, '-'));
 		ASSERT_EQUAL(-5, calc(-2, 3, '-'));
+		ASSERT_EQUAL(1, calc(1, 0, '-'));
 	}
 	void recognizes_overflows_when_subtracting() {
 		ASSERT_THROWS(calc(max, -1, '-'), std::overflow_error);
