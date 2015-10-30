@@ -69,7 +69,6 @@ namespace sevensegment {
 	}
 
 	unsigned const display_size { 8 };
-	std::vector<int> const line_numbers { 0, 1, 2, 3, 4 };
 
 	void printDigitSequence(digit_vector const& vector,
 			std::ostream& out, unsigned const scale_factor){
@@ -83,13 +82,11 @@ namespace sevensegment {
 
 		// iterate through lines, not digits
 		// OPTIMIZE: transpose vector first to get more cache hits
-		for_each(begin(line_numbers), end(line_numbers),
-				[scale_factor,&vector,&out_it](int line_nr) {
-
+		for(auto line_nr = 0; line_nr <= 4; line_nr++) {
 			auto count = (line_nr == 1 || line_nr == 3) ? scale_factor : 1;
 			auto line = lineOfLargeDigits(vector, line_nr, scale_factor);
 			std::fill_n(out_it, count, line);
-		});
+		}
 	}
 
 	// Requested for the assignment. Used nowhere but in the tests.
