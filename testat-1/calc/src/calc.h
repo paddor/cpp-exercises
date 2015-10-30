@@ -2,7 +2,6 @@
 #define CALC_H_
 
 #include <iosfwd>
-#include <string>
 int calc(int const a, int const b, char const operator_symbol);
 int calc(std::istream& input);
 
