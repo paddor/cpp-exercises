@@ -5,7 +5,8 @@
 #include <istream>
 #include <ostream>
 #include <cctype>
-#include <iostream>
+#include <istream>
+#include <ostream>
 
 Word::Word(std::string const &input_string) {
   if(input_string.empty())
