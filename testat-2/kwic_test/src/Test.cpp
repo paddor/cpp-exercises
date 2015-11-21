@@ -129,6 +129,17 @@ namespace kwic_tests {
     "this is another test \n"
   };
 
+  std::vector< std::vector< Word > > const example_output_lines {
+    {{"a"}, {"test"}, {"this"}, {"is"}},
+    {{"another"}, {"test"}, {"this"}, {"is"}},
+    {{"is"}, {"a"}, {"test"}, {"this"}},
+    {{"is"}, {"another"}, {"test"}, {"this"}},
+    {{"test"}, {"this"}, {"is"}, {"a"}},
+    {{"test"}, {"this"}, {"is"}, {"another"}},
+    {{"this"}, {"is"}, {"a"}, {"test"}},
+    {{"this"}, {"is"}, {"another"}, {"test"}}
+  };
+
   void it_reads_lines() {
     KWIC k {};
     std::ostringstream output {};
@@ -142,17 +153,7 @@ namespace kwic_tests {
     std::ostringstream output {};
     std::istringstream input { example_input };
     k.start(input, output);
-    std::vector< std::vector< Word > > rotated_and_sorted {
-    {{"a"}, {"test"}, {"this"}, {"is"}},
-    {{"another"}, {"test"}, {"this"}, {"is"}},
-    {{"is"}, {"a"}, {"test"}, {"this"}},
-    {{"is"}, {"another"}, {"test"}, {"this"}},
-    {{"test"}, {"this"}, {"is"}, {"a"}},
-    {{"test"}, {"this"}, {"is"}, {"another"}},
-    {{"this"}, {"is"}, {"a"}, {"test"}},
-    {{"this"}, {"is"}, {"another"}, {"test"}}
-    };
-    ASSERT_EQUAL(rotated_and_sorted, k.rotated_lines());
+    ASSERT_EQUAL(example_output_lines, k.rotated_lines());
   }
   void it_prints_correct_result() {
     KWIC k {};
