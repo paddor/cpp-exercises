@@ -30,11 +30,9 @@ void KWIC::read_lines(std::istream &input) {
 			Word word {};
 			line_stream >> word;
 			if (word.empty()) break;
-			std::cout << "Adding word to line:" << word << "\n";
 			line.push_back(word);
 		}
 		if (line.empty()) break;
-        std::cout << "Adding line to lines: " << line.size() << " words\n";
 		_input_lines.push_back(line);
 	}
 }
@@ -45,10 +43,6 @@ void KWIC::rotate() {
 			std::vector< Word > rotated_line {};
 			std::rotate_copy(input_line.begin(), input_line.begin() + (rotations - 1),
 					input_line.end(), std::back_inserter(rotated_line));
-			std::cout << "Adding rotated line: \n";
-			for_each(rotated_line.begin(), rotated_line.end(), [&](Word word) {
-				std::cout << word << "\n";
-			});
 			_rotated_lines.push_back(rotated_line);
 		}
 	});

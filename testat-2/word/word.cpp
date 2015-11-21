@@ -47,7 +47,6 @@ std::istream& Word::read(std::istream &input_stream) {
 
   while(std::isalpha(input_stream.peek())) {
     data += input_stream.get();
-    std::cout << "Data is now: " << data << "\n";
   }
 
 //  if(!input_stream) input_stream.clear(std::ios_base::eofbit);
