@@ -5,7 +5,7 @@
 #include <iterator>
 #include <iostream>
 
-void KWIC::start(std::istream &input, std::ostream &output) {
+void KWIC::start(std::istream& input, std::ostream& output) {
 	read_lines(input);
 	rotate();
 	sort();
@@ -19,7 +19,7 @@ const std::vector< std::vector< Word > > KWIC::rotated_lines() {
 	return _rotated_lines;
 }
 
-void KWIC::read_lines(std::istream &input) {
+void KWIC::read_lines(std::istream& input) {
 	while (!input.eof()) {
 		std::string line_string {};
 		std::getline(input, line_string);
@@ -52,7 +52,7 @@ void KWIC::sort() {
 	std::sort(_rotated_lines.begin(), _rotated_lines.end());
 }
 
-void KWIC::print(std::ostream &output) {
+void KWIC::print(std::ostream& output) {
   std::ostream_iterator<Word> out_it { output, " "};
   for_each(_rotated_lines.cbegin(), _rotated_lines.cend(), [&](std::vector<Word> line){
     copy(line.begin(), line.end(), out_it);

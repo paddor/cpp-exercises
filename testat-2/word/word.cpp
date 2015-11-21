@@ -8,7 +8,7 @@
 #include <istream>
 #include <ostream>
 
-Word::Word(std::string const &input_string) {
+Word::Word(std::string const& input_string) {
   if(input_string.empty())
     throw std::invalid_argument("given string is empty");
 
@@ -20,12 +20,12 @@ Word::Word(std::string const &input_string) {
   );
 }
 
-bool Word::operator==(Word const &other) const { return to_lower() == other.to_lower(); }
-bool Word::operator!=(Word const &other) const { return to_lower() != other.to_lower(); }
-bool Word::operator>(Word const &other) const { return to_lower() > other.to_lower(); }
-bool Word::operator<(Word const &other) const { return other > *this; }
-bool Word::operator>=(Word const &other) const { return to_lower() >= other.to_lower(); }
-bool Word::operator<=(Word const &other) const { return to_lower() <= other.to_lower(); }
+bool Word::operator==(Word const& other) const { return to_lower() == other.to_lower(); }
+bool Word::operator!=(Word const& other) const { return to_lower() != other.to_lower(); }
+bool Word::operator>(Word const& other) const { return to_lower() > other.to_lower(); }
+bool Word::operator<(Word const& other) const { return other > *this; }
+bool Word::operator>=(Word const& other) const { return to_lower() >= other.to_lower(); }
+bool Word::operator<=(Word const& other) const { return to_lower() <= other.to_lower(); }
 
 Word::operator std::string() const { return data; }
 
@@ -59,7 +59,7 @@ std::ostream& Word::print(std::ostream &output_stream) const {
 }
 
 
-std::ostream& operator<<(std::ostream &output_stream, Word const &word) {
+std::ostream& operator<<(std::ostream &output_stream, Word const& word) {
   return word.print(output_stream);
 }
 std::istream& operator>>(std::istream &input_stream, Word &word) {

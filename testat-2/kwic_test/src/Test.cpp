@@ -93,7 +93,7 @@ namespace word_tests {
   }
 
 
-  void add_tests(cute::suite &suite) {
+  void add_tests(cute::suite& suite) {
 	suite.push_back(CUTE(it_initializes_empty));
 	suite.push_back(CUTE(it_initializes_in_a_vector));
 	suite.push_back(CUTE(it_reads_input));
@@ -118,7 +118,7 @@ namespace kwic_tests {
 	  { {"this"}, {"is"}, {"a"}, {"test"} },
 	  { {"this"}, {"is"}, {"another"}, {"test"} }
   };
-  const std::string example_output {
+  std::string const example_output {
     "a test this is \n"
     "another test this is \n"
     "is a test this \n"
@@ -162,7 +162,7 @@ namespace kwic_tests {
     k.start(input, output);
     ASSERT_EQUAL(example_output, output.str());
   }
-  void add_tests(cute::suite &suite) {
+  void add_tests(cute::suite& suite) {
 	suite.push_back(CUTE(it_rotates_and_sorts));
 	suite.push_back(CUTE(it_reads_lines));
 	suite.push_back(CUTE(it_prints_correct_result));
