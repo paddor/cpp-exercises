@@ -8,8 +8,8 @@ class KWIC {
 
 public:
   void start(std::istream &input_stream, std::ostream &output_stream);
-  const std::vector< std::vector< Word > > input_lines();
-  const std::vector< std::vector< Word > > rotated_lines();
+  std::vector< std::vector< Word > > const input_lines();
+  std::vector< std::vector< Word > > const rotated_lines();
 
 private:
   std::vector< std::vector< Word > > _input_lines {};
