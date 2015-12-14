@@ -42,19 +42,6 @@ public:
 	indexableSet( std::initializer_list<T> init, A const& alloc )
 	: indexableSet<T, C, A>{ init, C(), alloc} {}
 
-	T operator[](typename std::set<T, C, A>::difference_type pos) {
-		if (pos >= 0) {
-			if (pos > this->size() - 1) throw std::out_of_range("index out of bound");
-			auto it = this->begin();
-			advance(it, pos);
-			return *it;
-		} else {
-			auto it = this->end();
-			advance(it, pos);
-			if (pos < -this->size()) throw std::out_of_range("index out of bound");
-			return *it;
-		}
-	}
 	T const operator[](typename std::set<T, C, A>::difference_type pos) const {
 		if (pos >= 0) {
 			auto it = this->cbegin();
@@ -69,19 +56,11 @@ public:
 		}
 	}
 
-	T front() {
-		if (this->empty()) throw std::out_of_range("container is empty");
-		return *this->begin();
-	}
 	T const front() const {
 		if (this->empty()) throw std::out_of_range("container is empty");
 		return *this->cbegin();
 	}
 
-	T back() {
-		if (this->empty()) throw std::out_of_range("container is empty");
-		return *prev(this->end());
-	}
 	T const back() const {
 		if (this->empty()) throw std::out_of_range("container is empty");
 		return *prev(this->cend());

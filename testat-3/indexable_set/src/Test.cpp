@@ -55,23 +55,8 @@ void itCanAccessWithPositiveIndex() {
 	ASSERT_EQUAL("foo", a[2]);
 	ASSERT_EQUAL("quu", a[3]);
 }
-void itCanAccessWithPositiveIndexConst() {
-	indexableSet<std::string> const a { "bar", "baz", "foo", "quu" };
-	ASSERT_EQUAL("bar", a[0]);
-	ASSERT_EQUAL("baz", a[1]);
-	ASSERT_EQUAL("foo", a[2]);
-	ASSERT_EQUAL("quu", a[3]);
-}
 void itCanAccessWithNegativeIndex() {
 	indexableSet<std::string> a { "bar", "baz", "foo", "quu" };
-	ASSERT_EQUAL("bar", a[0]);
-	ASSERT_EQUAL("quu", a[-1]);
-	ASSERT_EQUAL("foo", a[-2]);
-	ASSERT_EQUAL(a[0], a[-a.size()]);
-}
-
-void itCanAccessWithNegativeIndexConst() {
-	indexableSet<std::string> const a { "bar", "baz", "foo", "quu" };
 	ASSERT_EQUAL("bar", a[0]);
 	ASSERT_EQUAL("quu", a[-1]);
 	ASSERT_EQUAL("foo", a[-2]);
@@ -83,18 +68,8 @@ void itHasFront() {
 	ASSERT_EQUAL("bar", a.front());
 }
 
-void itHasFrontConst() {
-	indexableSet<std::string> const a { "foo", "bar" };
-	ASSERT_EQUAL("bar", a.front());
-}
-
 void itHasBack() {
 	indexableSet<std::string> a { "foo", "bar" };
-	ASSERT_EQUAL("foo", a.back());
-}
-
-void itHasBackConst() {
-	indexableSet<std::string> const a { "foo", "bar" };
 	ASSERT_EQUAL("foo", a.back());
 }
 
@@ -104,20 +79,8 @@ void itThrowsExceptionWhenIndexOutOfBound() {
 	ASSERT_THROWS(a[-3], std::out_of_range);
 }
 
-void itThrowsExceptionWhenIndexOutOfBoundConst() {
-	indexableSet<std::string> const a { "foo", "bar" };
-	ASSERT_THROWS(a[2], std::out_of_range);
-	ASSERT_THROWS(a[-3], std::out_of_range);
-}
-
 void itThrowsExceptionWhenAccessingFrontOrBackOfEmptySet() {
 	indexableSet<std::string> a {};
-	ASSERT_THROWS(a.front(), std::out_of_range);
-	ASSERT_THROWS(a.back(), std::out_of_range);
-}
-
-void itThrowsExceptionWhenAccessingFrontOrBackOfEmptySetConst() {
-	indexableSet<std::string> const a {};
 	ASSERT_THROWS(a.front(), std::out_of_range);
 	ASSERT_THROWS(a.back(), std::out_of_range);
 }
@@ -148,16 +111,10 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(itCanAccessWithPositiveIndex));
 	s.push_back(CUTE(itCanAccessWithNegativeIndex));
 	s.push_back(CUTE(itAccessesInSortedOrder));
-	s.push_back(CUTE(itCanAccessWithPositiveIndexConst));
-	s.push_back(CUTE(itCanAccessWithNegativeIndexConst));
 	s.push_back(CUTE(itHasFront));
-	s.push_back(CUTE(itHasFrontConst));
 	s.push_back(CUTE(itHasBack));
-	s.push_back(CUTE(itHasBackConst));
 	s.push_back(CUTE(itThrowsExceptionWhenIndexOutOfBound));
-	s.push_back(CUTE(itThrowsExceptionWhenIndexOutOfBoundConst));
 	s.push_back(CUTE(itThrowsExceptionWhenAccessingFrontOrBackOfEmptySet));
-	s.push_back(CUTE(itThrowsExceptionWhenAccessingFrontOrBackOfEmptySetConst));
 	s.push_back(CUTE(itCanUseCustomCompareFunctor));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
