@@ -49,7 +49,7 @@ public:
 	//   * itHasMutableFrontAndCanBreakSet
 	T& front() {
 		if (this->empty()) throw std::out_of_range("container is empty");
-		return (T&)*this->begin();
+		return const_cast<T&>(*this->begin());
 	}
 };
 
