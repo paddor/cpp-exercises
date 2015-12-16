@@ -96,6 +96,11 @@ void itThrowsExceptionWhenAccessingFrontOrBackOfEmptySet() {
 	ASSERT_THROWS(a.back(), std::out_of_range);
 }
 
+void itThrowsExceptionWhenAccessingIndexMinusOneOnEmptySet() {
+	indexableSet<std::string> a {};
+	ASSERT_THROWS(a[-1], std::out_of_range);
+}
+
 void itCanUseCustomCompareFunctor() {
 	struct caselessCompare {
 		bool operator()(std::string const& lhs, std::string const& rhs) const {
@@ -129,6 +134,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(itCanUseCustomCompareFunctor));
 	s.push_back(CUTE(itHasMutableFront));
 	s.push_back(CUTE(itHasMutableFrontAndCanBreakSet));
+	s.push_back(CUTE(itThrowsExceptionWhenAccessingIndexMinusOneOnEmptySet));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");

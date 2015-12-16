@@ -18,20 +18,19 @@ public:
 	// inherit all set constructors
 	using std::set<T, C, A>::set;
 
+	T const& operator[](typename std::set<T, C, A>::difference_type pos) const {
+		// Apparently, the following static_cast to a signed type is not needed,
+		// although recommended by tutor
+//		auto sz = static_cast<typename std::set<T, C, A>::difference_type>(this->size());
+//		if (pos < 0) pos += sz;
+//		if (pos < 0 || pos >= sz)
+//			throw std::out_of_range("index out of bound");
 
+		if (pos < 0) pos += this->size();
+		if (pos < 0 || pos >= this->size())
+			throw std::out_of_range("index out of bound");
 
-	T const operator[](typename std::set<T, C, A>::difference_type pos) const {
-		if (pos >= 0) {
-			auto it = this->cbegin();
-			advance(it, pos);
-			if (pos > this->size() - 1) throw std::out_of_range("index out of bound");
-			return *it;
-		} else {
-			auto it = this->cend();
-			advance(it, pos);
-			if (pos < -this->size()) throw std::out_of_range("index out of bound");
-			return *it;
-		}
+		return *std::next(this->begin(), pos);
 	}
 
 	T const& front() const {
