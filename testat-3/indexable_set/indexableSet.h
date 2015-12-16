@@ -3,8 +3,8 @@
 
 #include <set>
 #include <iterator>
+#include <memory>
 #include <functional>
-#include <cmath>
 #include <stdexcept>
 
 template<
