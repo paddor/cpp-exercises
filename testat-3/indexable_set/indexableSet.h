@@ -15,32 +15,10 @@ template<
 class indexableSet: public std::set<T, C, A>
 {
 public:
-	// default constructor
-	indexableSet(): std::set<T, C, A>{}{};
+	// inherit all set constructors
+	using std::set<T, C, A>::set;
 
-	// range constructors
-	template< typename InputIt >
-	indexableSet( InputIt const first, InputIt const last, C const& comp = C(), A const& alloc = A())
-	: std::set<T, C, A>{ first, last, comp, alloc} {}
 
-	template< typename InputIt >
-	indexableSet( InputIt first, InputIt last, A const& alloc )
-	: indexableSet<T, C, A>{ first, last, C(), alloc} {}
-
-	// copy constructor
-	indexableSet( indexableSet const& other, A const& alloc = A() )
-	: std::set<T, C, A>{ other, alloc} {}
-
-	// move constructor
-	indexableSet( indexableSet && other, A const& alloc = A() )
-	: std::set<T, C, A>{ other, alloc} {}
-
-	// initializer list constructor
-	indexableSet( std::initializer_list<T> init, C const& comp = C(), A const& alloc = A() )
-	: std::set<T, C, A>{ init, comp, alloc} {}
-
-	indexableSet( std::initializer_list<T> init, A const& alloc )
-	: indexableSet<T, C, A>{ init, C(), alloc} {}
 
 	T const operator[](typename std::set<T, C, A>::difference_type pos) const {
 		if (pos >= 0) {
