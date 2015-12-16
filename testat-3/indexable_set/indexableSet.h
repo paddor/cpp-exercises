@@ -21,7 +21,8 @@ public:
 	T const& operator[](typename std::set<T, C, A>::difference_type pos) const {
 		// Apparently, the following static_cast to a signed type is not needed,
 		// although recommended by tutor
-//		auto sz = static_cast<typename std::set<T, C, A>::difference_type>(this->size());
+//		auto sz = static_cast<typename std::set<T, C, A>
+//					::difference_type>(this->size());
 //		if (pos < 0) pos += sz;
 //		if (pos < 0 || pos >= sz)
 //			throw std::out_of_range("index out of bound");
@@ -52,6 +53,5 @@ public:
 		return const_cast<T&>(*this->begin());
 	}
 };
-
 
 #endif /* INDEXABLESET_H_ */
