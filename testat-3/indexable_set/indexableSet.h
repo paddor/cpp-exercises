@@ -34,14 +34,23 @@ public:
 		}
 	}
 
-	T const front() const {
+	T const& front() const {
 		if (this->empty()) throw std::out_of_range("container is empty");
 		return *this->cbegin();
 	}
 
-	T const back() const {
+	T const& back() const {
 		if (this->empty()) throw std::out_of_range("container is empty");
 		return *prev(this->cend());
+	}
+
+	// self-study: only here to verify some semantics of T/T& return type
+	// see tests:
+	//   * itHasMutableFront
+	//   * itHasMutableFrontAndCanBreakSet
+	T& front() {
+		if (this->empty()) throw std::out_of_range("container is empty");
+		return (T&)*this->begin();
 	}
 };
 

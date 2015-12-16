@@ -68,6 +68,17 @@ void itHasFront() {
 	ASSERT_EQUAL("bar", a.front());
 }
 
+void itHasMutableFront() {
+	indexableSet<std::string> a { "a", "b" };
+	a.front() = "c";
+}
+
+void itHasMutableFrontAndCanBreakSet() {
+	indexableSet<std::string> a { "a", "b" };
+	a.front() = "c";
+	ASSERT_EQUAL("c", a.front());
+}
+
 void itHasBack() {
 	indexableSet<std::string> a { "foo", "bar" };
 	ASSERT_EQUAL("foo", a.back());
@@ -116,6 +127,8 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(itThrowsExceptionWhenIndexOutOfBound));
 	s.push_back(CUTE(itThrowsExceptionWhenAccessingFrontOrBackOfEmptySet));
 	s.push_back(CUTE(itCanUseCustomCompareFunctor));
+	s.push_back(CUTE(itHasMutableFront));
+	s.push_back(CUTE(itHasMutableFrontAndCanBreakSet));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
