@@ -44,6 +44,16 @@ public:
 		return *prev(this->cend());
 	}
 
+	/* NOTE: Adding at() because it was needed on a subclass of std::list
+	 * during the exam of HS2015 on January 20th, 2016. Unfortunately,
+	 * I fucked up and wrote:
+	 *
+	 *   return this->[pos];
+	 */
+	T const& at(typename std::set<T, C, A>::difference_type pos) const {
+		return (*this)[pos];
+	}
+
 	// self-study: only here to verify some semantics of T/T& return type
 	// see tests:
 	//   * itHasMutableFront

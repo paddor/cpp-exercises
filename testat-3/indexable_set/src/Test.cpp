@@ -84,6 +84,11 @@ void itHasBack() {
 	ASSERT_EQUAL("foo", a.back());
 }
 
+void itHasAt() {
+	indexableSet<std::string> a { "foo", "bar" };
+	ASSERT_EQUAL("bar", a.at(0));
+}
+
 void itThrowsExceptionWhenIndexOutOfBound() {
 	indexableSet<std::string> a { "foo", "bar" };
 	ASSERT_THROWS(a[2], std::out_of_range);
@@ -135,6 +140,7 @@ void runAllTests(int argc, char const *argv[]){
 	s.push_back(CUTE(itHasMutableFront));
 	s.push_back(CUTE(itHasMutableFrontAndCanBreakSet));
 	s.push_back(CUTE(itThrowsExceptionWhenAccessingIndexMinusOneOnEmptySet));
+	s.push_back(CUTE(itHasAt));
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(s, "AllTests");
