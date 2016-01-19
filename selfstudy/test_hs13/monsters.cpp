@@ -44,7 +44,7 @@ int main() {
 	forum_troll ft {};
 //	ft = std::string { "ft" };
 	std::cout << "--- ft initialized.\n";
-	troll t {ft}; // direct-list-initialization, using implicit copy constructor
+	troll t {ft}; // direct-list-initialization, using implicit copy constructor, object-slicing!
 //	t = std::string { "t" };
 	monster &m{ft}; // reference-initialization
 	m = std::string { "m/ft" };
@@ -61,7 +61,7 @@ int main() {
 	t.attack();
 	m.attack();
 	// write stupid things
-	// clubbing kills me         (<--- virtual, but object is actually of type troll, not forum_troll)
+	// clubbing kills me         (<--- object is of type troll)
 	// write stupid things (<--- not roar, because it's a reference to the original object, and #attack is virtual)
 
 	std::cout << "c --------\n";
